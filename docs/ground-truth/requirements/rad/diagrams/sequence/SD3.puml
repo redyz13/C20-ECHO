@@ -1,0 +1,95 @@
+@startuml
+' RAD v1.0.0, section 3.4.4.2.3, p. 73
+title SD 3 - Safe Escalation
+
+actor Helper as H
+boundary TriggerSafeEscalation as UI
+control GestioneEscalationControl as Ctrl
+boundary GestioneEmergenzaUI as SUI
+actor Supervisor as S
+entity LogAudit as Log
+
+activate H
+H -> UI : attivaSafeEscalation()
+activate UI
+
+create Ctrl
+UI -> Ctrl : creaGestioneEscalation()
+activate Ctrl
+
+note over H, Ctrl
+    Il canale di comunicazione Helper-Caller
+    resta attivo per tutta la durata della procedura
+end note
+
+loop [Nessuna presa in carico e restano Supervisor disponibili [Scenario Alternativo II]]
+
+    Ctrl -> SUI : assegnaASupervisorDisponibile()
+    activate SUI
+    SUI -> S : mostraSegnalazione()
+    activate S
+
+    alt [Il Supervisor risponde entro il tempo T]
+        S -> SUI : confermaPresaInCarico()
+        SUI -> Ctrl : registraPresaInCarico()
+    else [Timeout scaduto]
+        Ctrl -> Ctrl : rilevaScadenzaTimeout()
+
+        note right of Ctrl
+            Il Supervisor viene escluso
+            dai successivi tentativi
+        end note
+    end
+
+    deactivate S
+    deactivate SUI
+end
+
+alt [Presa in carico confermata [Flusso Principale]]
+
+    ' Reference: SD3_ref1.puml
+    ref over Ctrl, S : SD 3 - Gestione del trasferimento esterno
+
+else [Nessun Supervisor disponibile [Scenario Alternativo I]]
+
+    Ctrl -> UI : avviaGestioneFallback()
+    UI -> H : mostraInformativaFallback()
+
+    alt [Caso urgente [L'Helper contatta i servizi di emergenza]]
+
+        ' Reference: SD3_ref2.puml
+        ref over H, Ctrl : SD 3 - Trasferimento urgente in fallback
+
+    else [Caso meno urgente [L'Helper non contatta i servizi di emergenza]]
+
+        note over H, UI
+            L'Helper prosegue l'ascolto e orienta il Caller
+            verso servizi professionali qualificati.
+        end note
+    end
+
+    ' Reference: SD3_ref3.puml
+    ref over H, Ctrl : SD 3 - Rendicontazione del fallback
+end
+
+Ctrl -> Ctrl : attendi10Secondi()
+
+create Log
+Ctrl -> Log : <<create>>
+activate Log
+Ctrl -> Log : registraEventoEscalation()
+
+alt [Chiusura procedura (Trasferimento riuscito o Fallback terminato)]
+    Ctrl -> UI : escalationConclusa()
+    destroy Ctrl
+else [Trasferimento fallito o non confermato (Procedura aperta)]
+    note right of UI
+        La procedura rimane aperta per
+        consentire la gestione dell'impedimento
+    end note
+end
+
+deactivate Log
+deactivate UI
+deactivate H
+@enduml

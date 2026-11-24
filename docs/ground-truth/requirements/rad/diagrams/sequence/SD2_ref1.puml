@@ -1,0 +1,46 @@
+@startuml
+' RAD v1.0.0, section 3.4.4.2.2, p. 70
+title ref.1 Compilazione e Creazione Richiesta
+
+actor Caller as C
+boundary ":RichiestaAscoltoUI" as UI
+control ":RichiestaAscoltoController" as Ctrl
+
+C -> UI : 1 selezionaRichiediAscolto()
+UI -> Ctrl : 2 verificaRichiesteAttive()
+activate Ctrl
+
+alt [Richiesta già attiva]
+    Ctrl --> UI : 3 richiestaAttiva()
+    UI --> C : 4 mostraErroreRichiestaAttiva()
+
+else [Nessuna richiesta attiva]
+    Ctrl --> UI : 5 verificaSuperata()
+    UI --> C : 6 mostraModulo(categorie, descrizione)
+
+    loop [Finché non viene selezionata almeno una categoria]
+
+        C -> UI : 7 confermaInvio(categorie, descrizione)
+        UI -> Ctrl : 8 elaboraRichiesta(categorie, descrizione)
+        Ctrl -> Ctrl : 9 verificaAlmenoUnaCategoria()
+
+        alt [Nessuna categoria selezionata]
+            Ctrl --> UI : 10 erroreCategorie()
+            UI --> C : 11 mostraErroreCategorie()
+
+        else [Almeno una categoria selezionata]
+            create entity "r:RichiestaAscolto" as R
+            Ctrl -> R : 12 <<create>> nuovaRichiesta(idUnivoco, tipoEta, categorie, desc)
+            activate R
+            R --> Ctrl : 13 richiestaCreata
+            deactivate R
+            Ctrl -> Ctrl : 14 avviaTimerComplessivo()
+
+            break [Richiesta creata]
+            end
+        end
+    end
+end
+
+deactivate Ctrl
+@enduml

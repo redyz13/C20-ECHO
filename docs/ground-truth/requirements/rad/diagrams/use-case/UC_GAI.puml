@@ -1,0 +1,29 @@
+@startuml
+' RAD v1.0.0, section 3.4.2.3, p. 48
+title UC Gestione Aiuto
+
+actor Caller
+actor "Caller Minorenne" as Minore
+actor Helper
+
+Caller <|-- Minore
+
+rectangle "Gestione Aiuto" {
+    usecase "Richiesta di ascolto" as Request
+    usecase "Annullare richiesta" as Cancel
+    usecase "Rispondere alla Richiesta" as Respond
+}
+
+Caller -- Request
+Caller -- Cancel
+Helper -- Respond
+
+Cancel ..> Request : <<extends>>
+Respond ..> Request : <<extends>>
+
+note bottom of Respond
+    Esiti:
+    - Accettazione
+    - Rifiuto
+end note
+@enduml

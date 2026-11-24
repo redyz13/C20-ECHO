@@ -1,0 +1,43 @@
+@startuml
+' RAD v1.0.0, section 3.4.4.2.2, p. 71
+title ref.3 Gestione Risposte Helper
+
+control ":RichiestaAscoltoController" as Ctrl
+boundary ":HelperDashboard" as HD
+actor Helper as H
+
+Ctrl -> HD : 1 inoltraProposte(gruppoHelperIdonei)
+HD -> H : 2 notificaProposta(categorie, descrizione)
+Ctrl -> Ctrl : 3 avviaTimerGruppo()
+
+alt [Un Helper accetta per primo]
+
+    H -> HD : 4 accettaProposta()
+    HD -> Ctrl : 5 registraAccettazione(idHelper)
+    Ctrl --> Ctrl : 6 esitoGruppo(HelperAccettato)
+
+else [Tutti gli Helper rifiutano]
+
+    loop [Per ogni Helper che rifiuta]
+        H -> HD : 7 rifiutaProposta()
+        HD -> Ctrl : 8 registraRifiuto(idHelper)
+    end
+
+    Ctrl -> Ctrl : 9 verificaEsitoGruppo()
+    Ctrl --> Ctrl : 10 esitoGruppo(NessunaAccettazione)
+
+else [Almeno una proposta ancora pendente]
+
+    loop [Per ogni Helper che rifiuta]
+        H -> HD : 11 rifiutaProposta()
+        HD -> Ctrl : 12 registraRifiuto(idHelper)
+    end
+
+    ... Attesa della scadenza del timer comune (20 secondi) ...
+
+    Ctrl -> Ctrl : 13 registraMancateRisposte()
+    Ctrl -> HD : 14 ritiraPropostePendenti()
+    Ctrl -> Ctrl : 15 verificaEsitoGruppo()
+    Ctrl --> Ctrl : 16 esitoGruppo(NessunaAccettazione)
+end
+@enduml

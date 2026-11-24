@@ -1,6 +1,6 @@
 # Safe Escalation Management (RF_SE)
 
-Source: RAD v1.0.0, § 3.2.5, pp. 20–22.
+Source: RAD v1.0.0, § 3.2.5, pp. 21–22.
 
 | ID | Name | Description | Actors | Priority |
 |---|---|---|---|---|

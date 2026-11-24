@@ -1,0 +1,26 @@
+@startuml
+' RAD v1.0.0, section 3.4.5.2.1, p. 84
+' Navigation graph, not an object lifecycle.
+title Caller con autenticazione SPID/CIE
+
+state "Dashboard" as Dashboard
+state "Logout" as Logout
+state "Profilo" as Profile
+state "Modifica profilo" as EditProfile
+state "Richiesta di ascolto" as Request
+state "Annullamento richiesta" as Cancel
+state "Sessione di ascolto" as Session
+state "Feedback anonimo" as Feedback
+
+[*] --> Dashboard
+
+Dashboard --> Logout
+Dashboard --> Profile
+Profile --> EditProfile
+
+Dashboard --> Request
+Request -[dashed]-> Cancel
+Cancel --> Dashboard
+Request --> Session
+Session --> Feedback
+@enduml

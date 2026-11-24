@@ -1,0 +1,66 @@
+@startuml
+' RAD v1.0.0, section 3.4.4.2.3, p. 75
+title SD 3 - Trasferimento urgente in fallback
+
+actor Helper as H
+boundary TriggerSafeEscalation as UI
+control GestioneEscalationControl as Ctrl
+control TrasferimentoDatiControl as Transfer
+participant "Servizi di emergenza\n(simulati)" as External
+
+note over H, Ctrl
+    Il fallback è attivo e l'Helper
+    ritiene il caso urgente.
+end note
+
+H -> UI : avviaTrasferimentoUrgente()
+UI -> Ctrl : richiediTrasferimento()
+Ctrl -> Transfer : eseguiTrasferimento()
+
+loop [Finché la trasmissione non riesce e restano tentativi]
+
+    Transfer -> External : trasmettiDatiDisponibili()
+
+    alt [Trasmissione riuscita]
+        External --> Transfer : confermaRicezione()
+    else [Errore di trasmissione]
+        External --> Transfer : erroreTrasmissione()
+        Transfer -> Transfer : preparaNuovoTentativo()
+    end
+end
+
+alt [Dati trasmessi]
+
+    Transfer --> Ctrl : datiTrasmessi()
+
+    alt [Presa in carico esterna confermata]
+
+        External --> Transfer : confermaPresaInCarico()
+        Transfer --> Ctrl : presaInCaricoConfermata()
+        Ctrl -> UI : notificaPresaInCarico()
+        UI -> H : mostraConferma()
+
+    else [Presa in carico non confermata]
+
+        Transfer --> Ctrl : presaInCaricoNonConfermata()
+        Ctrl -> UI : notificaMancataConferma()
+        UI -> H : mostraAvviso()
+
+        note over H, Ctrl
+            La procedura rimane aperta
+            fino alla presa in carico
+            o alla gestione dell'impedimento.
+        end note
+    end
+
+else [Tentativi esauriti [Flusso di Errore]]
+
+    Transfer --> Ctrl : trasmissioneFallita()
+    Ctrl -> UI : notificaErroreTrasferimento()
+    UI -> H : mostraErrore()
+
+    note over H, Ctrl
+        Il canale Helper-Caller resta attivo.
+    end note
+end
+@enduml

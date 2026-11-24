@@ -1,0 +1,34 @@
+@startuml
+' RAD v1.0.0, section 3.4.4.1.1, p. 68
+title SCD1 Ciclo di vita della richiesta di aiuto
+
+state "Creata" as Created
+state "In attesa" as Waiting
+state "Non Assegnata" as Unassigned
+state "Annullata" as Cancelled
+state "In corso" as Active
+state "In attesa di feedback" as AwaitingFeedback
+state "Terminata" as Terminated
+
+[*] --> Created
+Created --> Waiting : Invio valido e\ncreazione della richiesta
+
+Waiting --> Waiting : EsitiGruppoEsaminati\n[NessunHelperAccetta && AltriHelperDisponibili]\n/ AvviaNuovoMatching
+
+Waiting --> Unassigned : EsitiGruppoEsaminati\n[NessunHelperAccetta && NessunAltroHelperDisponibile]
+Waiting --> Unassigned : after(T_timeoutComplessivo)
+
+Waiting --> Cancelled : CallerAnnullaRichiesta
+Waiting --> Cancelled : after(T_timeoutRiconnessione)
+
+Waiting --> Active : HelperAccetta
+
+Active --> AwaitingFeedback : TerminaSessione
+Active --> AwaitingFeedback : TimeoutRiconnessioneScaduto
+
+AwaitingFeedback --> Terminated : InviaFeedBack
+
+Unassigned --> [*]
+Cancelled --> [*]
+Terminated --> [*]
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+' RAD v1.0.0, section 3.4.5.2.2, p. 85
+' Navigation graph, not an object lifecycle.
+title Caller con Safe Access Path
+
+state "Area Ospite" as GuestArea
+state "Richiesta di ascolto" as Request
+state "Annullamento richiesta" as Cancel
+state "Sessione di ascolto" as Session
+state "Logout" as Logout
+
+GuestArea --> Request
+Request -[dashed]-> Cancel
+Request --> Session
+Cancel --> Logout
+Session --> Logout
+@enduml

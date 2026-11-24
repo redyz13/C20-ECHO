@@ -1,0 +1,15 @@
+@startuml
+' RAD v1.0.0, section 3.1.1, p. 12
+title Attori del sistema
+
+actor Utente
+actor Caller
+actor Helper
+actor Supervisor
+actor "Caller minorenne" as Minore
+
+Utente <|-- Caller
+Utente <|-- Helper
+Utente <|-- Supervisor
+Caller <|-- Minore
+@enduml

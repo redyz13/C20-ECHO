@@ -1,0 +1,19 @@
+@startuml
+' RAD v1.0.0, section 3.4.2.1, p. 43
+title UC_ACM: Accesso del Caller minorenne
+
+actor "Provider SPID/CIE" as Provider
+actor "Caller Minorenne" as Minore
+
+rectangle "GESTIONE ACCESSO CALLER MINORENNE" {
+    usecase "Autenticazione SPID/CIE" as Auth
+    usecase "Autorizzazione Genitoriale" as Consent
+    usecase "Attivazione Safe Access Path" as SAP
+}
+
+Provider -- Auth
+Minore -- Auth
+Minore -- SAP
+
+Auth ..> Consent : <<include>>
+@enduml

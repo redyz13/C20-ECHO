@@ -22,6 +22,7 @@ social or emergency services.
 - Real-time text chat and WebRTC audio calls.
 - Session supervision and Safe Escalation.
 - Session termination and anonymous feedback.
+- Simulated external services: digital identity, parental authorization, partner verification, geolocation and emergency services (RNF_I_1, RNF_IN_1–3).
 
 ## Objectives and Success Criteria
 

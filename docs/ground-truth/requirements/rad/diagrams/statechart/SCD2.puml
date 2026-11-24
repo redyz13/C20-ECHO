@@ -1,0 +1,33 @@
+@startuml
+' RAD v1.0.0, section 3.4.4.1.2, p. 68
+title SCD 2: Ciclo di vita della procedura di Safe Escalation
+
+state "Creata" as Created
+state "In attesa" as Waiting
+state "In corso" as Active
+state "In fallback" as Fallback
+state "Registrazione" as Recording
+state "Terminata" as Terminated
+
+[*] --> Created
+
+Created --> Waiting : Invio richiesta al Supervisor
+
+Waiting --> Waiting : Timeout [altri supervisor disponibili]\n/ Reinvio richiesta
+
+Waiting --> Active : Supervisor conferma la presa in carico
+
+Waiting --> Fallback : [Nessun supervisor disponibile]\n/ Attivazione fallback
+
+Fallback --> Recording : [Helper allerta servizi esterni]\n/ Passaggio diretto ai servizi esterni
+
+Fallback --> Recording : [Nessun passaggio ai servizi d'emergenza]\n/ Ascolto
+
+Recording --> Terminated : Registrazione del modulo
+
+Active --> Terminated : Presa in carico della\nrichiesta con servizi esterni
+
+Active --> Terminated : Presa in carico della richiesta\nsenza l'allerta ai servizi esterni
+
+Terminated --> [*]
+@enduml

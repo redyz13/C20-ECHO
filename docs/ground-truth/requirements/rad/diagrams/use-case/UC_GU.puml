@@ -1,0 +1,25 @@
+@startuml
+' RAD v1.0.0, section 3.4.2.2, p. 46
+title UC Gestione Utenti
+
+actor Utente
+actor Helper
+actor Supervisor
+actor "Ente Partner" as Partner
+
+Utente <|-- Helper
+Utente <|-- Supervisor
+
+rectangle "Gestione Utenti" {
+    usecase "Gestione orari di disponibilità" as Availability
+    usecase "Verifica e assegnazione abilitazioni Helper\n(UC_GU_1)" as Qualifications
+    usecase "Visualizzazione informazioni area personale" as ViewProfile
+    usecase "Modifica informazioni area personale" as EditProfile
+}
+
+Helper -- Availability
+Supervisor -- Qualifications
+Partner -- Qualifications
+Utente -- ViewProfile
+Utente -- EditProfile
+@enduml

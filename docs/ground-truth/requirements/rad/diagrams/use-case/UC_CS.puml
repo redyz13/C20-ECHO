@@ -1,0 +1,32 @@
+@startuml
+' RAD v1.0.0, section 3.4.2.4, p. 52
+title UC_CS: Chiusura sessione e feedback
+
+actor Helper
+actor Caller
+actor Supervisor
+
+rectangle "Gestione della comunicazione" {
+    usecase "Chat testuale" as Chat
+    usecase "Chiamata audio" as Audio
+    usecase "Chiusura sessione" as Close
+    usecase "Feedback" as Feedback
+    usecase "Segnalazione dell'Helper" as Report
+    usecase "Avviso ai Supervisor" as Alert
+}
+
+Helper -- Chat
+Helper -- Audio
+Helper -- Close
+
+Caller -- Chat
+Caller -- Audio
+Caller -- Close
+Caller -- Feedback
+
+Supervisor -- Alert
+
+Close ..> Feedback : <<include>>
+Report ..> Feedback
+Alert ..> Report
+@enduml

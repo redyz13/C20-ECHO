@@ -1,0 +1,54 @@
+@startuml
+' RAD v1.0.0, section 3.4.4.2.2, p. 70
+title SD 2: Richiesta di ascolto e matching
+
+actor Caller as C
+boundary ":AreaPersonaleUI" as UI
+control ":RichiestaAscoltoController" as Ctrl
+entity "r:RichiestaAscolto" as R
+entity ":HelperRepository" as Repo
+boundary ":HelperDashboard" as HD
+actor Helper as H
+
+' Reference: SD2_ref1.puml
+ref over C, R : Compilazione e Creazione Richiesta
+
+Ctrl --> UI : 1 mostraSchermataAttesa()
+UI --> C : 2 indicatoreDiAttesa()
+
+loop [Fino ad assegnazione, annullamento, timeout o esaurimento Helper]
+
+    ' Reference: SD2_ref2.puml
+    ref over C, H : Gestione Annullamento e Disconnessione
+
+    Ctrl -> Ctrl : 3 verificaTempoMassimoComplessivo()
+
+    alt [Timeout complessivo scaduto]
+        Ctrl -> R : 4 impostaStato(NonAssegnata)
+    else [Timeout non scaduto]
+        Ctrl -> Repo : 5 individuaGruppoHelper(categorie, tipoEta, helperDaEscludere)
+        activate Repo
+        Repo --> Ctrl : 6 gruppoHelperIdonei
+        deactivate Repo
+
+        alt [Gruppo di Helper disponibile]
+
+            ' Reference: SD2_ref3.puml
+            ref over Ctrl, H : Gestione Risposte Helper
+
+            alt [Helper accettato]
+                ' Reference: SD2_ref4.puml
+                ' Assignment terminates the matching loop.
+                ref over C, H : Avvio Sessione di Ascolto e Notifica\nbreak Richiesta assegnata
+            else [Nessun Helper ha accettato]
+                Ctrl -> Ctrl : 7 aggiornaHelperDaEscludere()
+            end
+
+        else [Nessun Helper disponibile]
+            Ctrl -> R : 8 impostaStato(NonAssegnata)
+            Ctrl --> UI : 9 notificaIndisponibilitaHelper()
+            UI --> C : 10 mostraAlternative
+        end
+    end
+end
+@enduml

@@ -1,0 +1,45 @@
+@startuml
+' RAD v1.0.0, section 3.4.4.2.3, p. 76
+title SD 3 - Rendicontazione del fallback
+
+actor Helper as H
+control GestioneEscalationControl as Ctrl
+boundary ModuloRendicontazioneUI as UI
+control ModuloRendicontazioneControl as ReportCtrl
+entity Rendicontazione as Report
+
+note over H, Ctrl
+    Il fallback è terminato.
+    L'Helper deve rendicontare l'intervento.
+end note
+
+create UI
+Ctrl -> UI : <<create>>
+Ctrl -> UI : mostraModulo()
+UI -> H : visualizzaModulo()
+
+loop [Finché il salvataggio non va a buon fine]
+
+    H -> UI : inviaModulo(azioni, motivazioni)
+    UI -> ReportCtrl : registraRendicontazione(azioni, motivazioni)
+    ReportCtrl -> Report : salva(azioni, motivazioni)
+
+    alt [Salvataggio riuscito]
+
+        Report --> ReportCtrl : confermaSalvataggio()
+        ReportCtrl --> UI : esitoRegistrazione()
+        UI -> H : mostraConferma()
+
+    else [Errore di salvataggio]
+
+        Report --> ReportCtrl : erroreSalvataggio()
+        ReportCtrl --> UI : erroreRegistrazione()
+        UI -> H : mostraErrore()
+
+        note right of UI
+            L'interfaccia resta attiva
+            per consentire un nuovo tentativo.
+        end note
+    end
+end
+@enduml

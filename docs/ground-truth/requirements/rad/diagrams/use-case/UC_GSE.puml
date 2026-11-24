@@ -1,0 +1,31 @@
+@startuml
+' RAD v1.0.0, section 3.4.2.5, p. 56
+title UC_GSE Gestione Safe Escalation
+
+actor Helper
+actor Supervisor
+
+rectangle "Safe Escalation (SE)" {
+    usecase "Gestire il fallback" as Fallback
+    usecase "Attivare Safe Escalation" as Activate
+    usecase "Condividere dati sensibili" as ShareData
+    usecase "Effettuare rendicontazione del fallback" as Reporting
+    usecase "Effettuare passaggio ai servizi professionali" as Handover
+    usecase "Gestire assegnazione del Supervisor" as Assignment
+}
+
+Helper -- Fallback
+Helper -- Activate
+Helper -- ShareData
+Helper -- Reporting
+
+Supervisor -- ShareData
+Supervisor -- Reporting
+Supervisor -- Handover
+Supervisor -- Assignment
+
+Fallback ..> Reporting : <<include>>
+Fallback ..> Assignment : <<extend>>
+Activate ..> Assignment : <<include>>
+Handover ..> ShareData : <<include>>
+@enduml

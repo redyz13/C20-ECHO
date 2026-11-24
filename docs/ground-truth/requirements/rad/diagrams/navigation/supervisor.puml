@@ -1,0 +1,23 @@
+@startuml
+' RAD v1.0.0, section 3.4.5.2.4, p. 86
+' Navigation graph, not an object lifecycle.
+title Supervisor
+
+state "Dashboard" as Dashboard
+state "Profilo" as Profile
+state "Gestione Helper" as HelperManagement
+state "Rendicontazione" as Reporting
+state "Safe Escalation" as Escalation
+state "Mostra telefono" as ShowPhone
+state "Revisionato" as Reviewed
+
+[*] --> Dashboard
+
+Dashboard --> Profile
+Dashboard --> HelperManagement
+Dashboard --> Reporting
+Dashboard --> Escalation
+
+HelperManagement --> ShowPhone
+Reporting --> Reviewed
+@enduml

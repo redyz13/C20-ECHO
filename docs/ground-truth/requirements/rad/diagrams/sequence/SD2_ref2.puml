@@ -1,0 +1,59 @@
+@startuml
+' RAD v1.0.0, section 3.4.4.2.2, p. 71
+title ref.2 Gestione Annullamento e Disconnessione
+
+actor Caller as C
+boundary ":AreaPersonaleUI" as UI
+control ":RichiestaAscoltoController" as Ctrl
+entity "r:RichiestaAscolto" as R
+boundary ":HelperDashboard" as HD
+actor Helper as H
+
+alt [Il Caller annulla la richiesta]
+
+    C -> UI : 1 annullaRichiesta()
+    UI -> Ctrl : 2 annullaRichiesta(idRichiesta)
+
+    critical [Verifica atomica dello stato]
+        Ctrl -> R : 3 impostaStato(Annullata)
+        R --> Ctrl : 4 statoAggiornato
+    end
+
+    Ctrl -> HD : 5 ritiraPropostePendenti()
+    HD -> H : 6 notificaRitiroProposta()
+    Ctrl --> UI : 7 confermaAnnullamento()
+    UI --> C : 8 mostraConfermaAnnullamento()
+
+else [Il Caller perde la connessione]
+
+    UI -> Ctrl : 9 segnalaDisconnessione()
+    Ctrl -> Ctrl : 10 sospendiMatching()
+    Ctrl -> Ctrl : 11 avviaTimerRiconnessione()
+    Ctrl -> HD : 12 ritiraPropostePendenti()
+    HD -> H : 13 notificaRitiroProposta()
+
+    alt [Il Caller si riconnette entro il timeout]
+        C -> UI : 14 riconnessione()
+        UI -> Ctrl : 15 comunicaRiconnessione()
+        Ctrl -> Ctrl : 16 interrompiTimerRiconnessione()
+        Ctrl -> Ctrl : 17 riprendiMatching()
+
+        note right of Ctrl
+            Il matching riprende escludendo
+            gli Helper già interpellati.
+        end note
+
+    else [Timeout di riconnessione scaduto]
+
+        ... Scadenza del timer di riconnessione ...
+
+        critical
+            Ctrl -> R : 18 impostaStato(Annullata)
+            R --> Ctrl : 19 statoAggiornato
+        end
+
+        Ctrl --> UI : 20 notificaAnnullamentoAutomatico()
+        UI --> C : 21 mostraAnnullamento()
+    end
+end
+@enduml

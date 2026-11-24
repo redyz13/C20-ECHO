@@ -1,0 +1,55 @@
+@startuml
+' RAD v1.0.0, section 3.4.4.2.1, p. 69
+title
+SD 1: Safe Access Path
+SD_UC_02/ I Flusso di eventi ALTERNATIVO
+end title
+
+actor "c : CallerMinorenne" as C
+boundary ":QuestionarioForm" as Q
+control ":SAPControl" as SAP
+boundary ":Dispositivo" as D
+boundary ":AreaOspite" as A
+
+activate C
+C -> Q : compilaQuestionario(eta, rischioGenitori, idDispositivo)
+activate Q
+C -> Q : selezionaSAP()
+
+Q --> SAP : <<create>>
+Q -> SAP : verificaEtaDichiarata(eta)
+activate SAP
+SAP --> Q : etaValida(14 <= eta <= 17)
+
+alt [14 <= eta <= 17]
+    Q -> SAP : attivaSAP(eta, rischioGenitori, idDispositivo)
+
+    SAP -> D : verificaDispositivo(idDispositivo)
+    activate D
+    D --> SAP : esito
+    deactivate D
+
+    SAP -> D : idoneo = isIdoneo()
+    activate D
+    D --> SAP : true/false
+    deactivate D
+else
+    Q -> C : accessoNegatoEtaNonValida()
+end
+
+alt [idoneo]
+    SAP -> D : registraUtilizzo()
+    activate D
+    D --> A : <<create>>
+    deactivate D
+    activate A
+    A --> C : mostraAreaOspiti()
+    deactivate A
+else
+    SAP --> Q : mostraEsitoNegativo()
+end
+
+deactivate SAP
+deactivate Q
+deactivate C
+@enduml
