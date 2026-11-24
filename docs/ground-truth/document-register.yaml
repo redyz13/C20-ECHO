@@ -1,0 +1,47 @@
+schema_version: 1
+
+documents:
+  RAD:
+    title: Requirements Analysis Document
+    source: C20_E.C.H.O._RAD.pdf
+    version: "1.0.0"
+    date: "2026-11-20"
+    document_status: finalized
+    extraction_status: in_progress
+    path: requirements/rad/
+
+  SDD:
+    title: System Design Document
+    document_status: in_progress
+    extraction_status: pending
+    path: architecture/sdd/
+
+  ODD:
+    title: Object Design Document
+    document_status: pending
+    extraction_status: pending
+    path: architecture/odd/
+
+  MT:
+    title: Traceability Matrix
+    document_status: in_progress
+    extraction_status: pending
+    path: traceability/
+
+  TP:
+    title: Test Plan
+    document_status: pending
+    extraction_status: pending
+    path: verification/
+
+  TCS:
+    title: Test Case Specification
+    document_status: pending
+    extraction_status: pending
+    path: verification/
+
+  DS:
+    title: Design System
+    document_status: pending
+    extraction_status: pending
+    path: design-system/
