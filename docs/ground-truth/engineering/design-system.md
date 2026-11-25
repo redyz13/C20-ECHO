@@ -2,13 +2,28 @@
 
 Status: team visual decisions recorded; accessibility palette adaptations authorized, implementation defaults pending PM approval and bootstrap validation.
 Source: collective Design System survey, 2026-11-25 (one response, 39 questions).
-Scope: web, Android and iOS. Read [Technology Stack](tech-stack.md), [Coding Conventions](coding-conventions.md) and relevant RAD/SDD artifacts. Agents must not modify this document. Visual choices do not override approved functionality, permissions or safety constraints.
+Scope: web, Android and iOS. Read [Technology Stack](tech-stack.md), [Coding Conventions](coding-conventions.md) and relevant RAD/SDD artifacts. Agents must not modify this document or its brand assets. Visual choices do not override approved functionality, permissions or safety constraints.
 
 ## 1. Visual direction (team decisions)
 
 - Material Design 3 as visual reference, not a mandated component library or unmodified Material theme. Use E.C.H.O.'s custom palette; light theme only. No automatic wallpaper-derived colors or dark theme.
 - Welcoming, empathetic identity; existing logo unchanged and discreet on operational pages. Roboto, balanced typography and density, moderately rounded shapes, filled icons.
 - Filled primary buttons, outlined secondary buttons; subtle card elevation; outlined input fields. Use shared components and consistent state treatments across targets.
+
+### Brand assets
+
+Canonical assets are in [assets/](assets/). Preserve their artwork, colors, proportions and transparency; do not redraw, recolor, stretch or crop the brand. Use the SVG originals when supported, or the supplied PNG equivalents. Copy or derive platform resources from these sources without modifying the canonical files.
+
+| Asset | Use |
+|---|---|
+| `assets/logo_echo.svg`, `assets/logo_echo.png` | Standalone brand mark |
+| `assets/full_logo.svg`, `assets/full_logo.png` | Full wordmark on a sufficiently dark background; use the standalone mark on light surfaces when needed |
+| `assets/favicon.ico`, `assets/favicon-16x16.png`, `assets/favicon-32x32.png` | Browser favicon |
+| `assets/apple-touch-icon.png` | Web home-screen icon for Apple devices |
+| `assets/android-chrome-192x192.png`, `assets/android-chrome-512x512.png` | Web manifest icons, not final native launcher assets |
+| `assets/site.webmanifest` | Web manifest reference; integrate with the actual deployment paths if applicable |
+
+Existing brand gradients are exempt from the restriction on decorative UI gradients. Native launcher icons must be prepared from approved brand artwork at bootstrap (including appropriate 1024 × 1024 artwork and Android adaptive-icon layers); the supplied web icons do not establish native release readiness. Web manifest inclusion does not authorize offline caching or persistence of conversation content. Do not introduce PWA behavior solely because a manifest is available.
 
 ## 2. Color tokens (team palette with accessibility adaptations)
 
@@ -91,11 +106,11 @@ Use meaningful default, pressed, focused, disabled, loading, error and empty sta
 
 ## 7. Implementation and verification
 
-- At bootstrap, select a compatible shared UI approach and icon family; load Roboto consistently on all targets. Use the existing approved logo asset once its repository path is established. Do not introduce a competing UI library or change the brand independently. Theme code implements this document; configuration owns mechanical platform mapping.
+- At bootstrap, select a compatible shared UI approach and icon family; load Roboto consistently on all targets. Use the canonical brand assets in §1; configure runtime asset locations at bootstrap. Do not introduce a competing UI library or change the brand independently. Theme code implements this document; configuration owns mechanical platform mapping.
 - Planner includes relevant visual constraints and testable criteria in UI plans. Implementer reuses shared tokens/components. Independent Tester derives behavioral and accessibility checks from approved specifications, not rendered implementation. Reviewer checks conformance; use existing repair and audit paths without adding agent roles.
 - Prefer deterministic checks: validate declared color pairings in unit tests; verify component labels/states and role-specific interactions using the existing test toolchain. Check responsive layout, critical control visibility and keyboard navigation in relevant web/native integration tests. Use synthetic data; do not capture real conversation content. Include affected shared consumers when a theme change is authorized.
 - Automated accessibility checks can supplement the existing CI after bootstrap validation. No mandatory pixel-perfect snapshot comparison or separate design gate is introduced here. Visual review may use relevant screenshots as evidence, not as an independent source of requirements. Use existing CI commands and machine-readable reports; do not weaken tests to pass. Native/device behavior requires appropriate platform evidence.
-- Pending: PM approval of §3 defaults; UI library/icon family and asset paths; alignment with finalized SDD/DPD and TP/TCS; runtime checks across targets. Do not treat these pending details as confirmed survey decisions. Escalate only material uncertainty under the existing pipeline policy.
+- Pending: PM approval of §3 defaults; UI library/icon family and runtime asset integration (including native launcher assets); alignment with finalized SDD/DPD and TP/TCS; runtime checks across targets. Do not treat these pending details as confirmed survey decisions. Escalate only material uncertainty under the existing pipeline policy.
 
 ## References
 
