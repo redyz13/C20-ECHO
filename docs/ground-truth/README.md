@@ -10,6 +10,7 @@
 | traceability/ | Traceability matrix |
 | verification/tp/ | Test plan |
 | verification/tcs/ | Test case specifications |
+| engineering/ | Technology stack, coding conventions and design system |
 
 ## Rules
 
@@ -22,3 +23,9 @@
 - Preserve source identifiers, titles, model elements and semantics.
 - Report missing, ambiguous or conflicting specifications.
 - Agents must not modify any file under docs/ground-truth/.
+
+## Engineering Standards
+
+- [Technology Stack](engineering/tech-stack.md)
+- [Coding Conventions](engineering/coding-conventions.md)
+- [Design System](engineering/design-system.md)
