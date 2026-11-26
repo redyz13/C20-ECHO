@@ -1,12 +1,11 @@
 # E.C.H.O. — Design System
 
-Status: team visual decisions recorded; accessibility palette adaptations authorized, implementation defaults pending PM approval and bootstrap validation.
-Source: collective Design System survey, 2026-11-25 (one response, 39 questions).
+Status: approved. See the document register for version and technical validation status.
 Scope: web, Android and iOS. Read [Technology Stack](tech-stack.md), [Coding Conventions](coding-conventions.md) and relevant RAD/SDD artifacts. Agents must not modify this document or its brand assets. Visual choices do not override approved functionality, permissions or safety constraints.
 
-## 1. Visual direction (team decisions)
+## 1. Visual direction
 
-- Material Design 3 as visual reference, not a mandated component library or unmodified Material theme. Use E.C.H.O.'s custom palette; light theme only. No automatic wallpaper-derived colors or dark theme.
+- Material Design 3 as the visual reference, not an unmodified Material theme. Use E.C.H.O.'s custom palette; light theme only. No automatic wallpaper-derived colors or dark theme.
 - Welcoming, empathetic identity; existing logo unchanged and discreet on operational pages. Roboto, balanced typography and density, moderately rounded shapes, filled icons.
 - Filled primary buttons, outlined secondary buttons; subtle card elevation; outlined input fields. Use shared components and consistent state treatments across targets.
 
@@ -25,7 +24,7 @@ Canonical assets are in [assets/](assets/). Preserve their artwork, colors, prop
 
 Existing brand gradients are exempt from the restriction on decorative UI gradients. Native launcher icons must be prepared from approved brand artwork at bootstrap (including appropriate 1024 × 1024 artwork and Android adaptive-icon layers); the supplied web icons do not establish native release readiness. Web manifest inclusion does not authorize offline caching or persistence of conversation content. Do not introduce PWA behavior solely because a manifest is available.
 
-## 2. Color tokens (team palette with accessibility adaptations)
+## 2. Color tokens
 
 | Token | HEX | Role |
 |---|---|---|
@@ -42,7 +41,7 @@ Existing brand gradients are exempt from the restriction on decorative UI gradie
 | `warning` | `#8A6100` | Warning |
 | `danger` | `#D21F40` | Error and critical action emphasis |
 
-Use semantic aliases rather than copying HEX values into screens. Error and danger share the adapted color but have distinct labels, icons and meanings. Accessibility adaptations supersede the survey values for success, warning and danger; all other survey colors are unchanged. `controlBorder` is an additional functional token.
+Use semantic aliases rather than copying HEX values into screens. Error and danger share the same color but have distinct labels, icons and meanings.
 
 ### Accessible color pairings
 
@@ -57,11 +56,11 @@ Use the WCAG 2.2 AA contrast thresholds as an engineering target across platform
 | Semantic text, icon or outline | `success`, `warning` or `danger` | `surface` or `background` |
 | Input outline | `controlBorder`; `primary` when focused; `danger` on error | `surface` or `background` |
 
-The adapted semantic tokens have contrast ratios of 5.12:1, 5.54:1 and 5.24:1 against `surface`, and 4.68:1, 5.07:1 and 4.79:1 against `background`, respectively. Use white (`surface`) text on their filled variants, not `text` (dark purple). The light `border` token is decorative only; use `controlBorder` for necessary control boundaries (3.69:1 against `surface`, 3.37:1 against `background`). Use a distinct visible focus indicator with sufficient contrast against adjacent colors. Never rely on color alone. Do not invent substitute palette colors in individual features. Check actual rendered states, including opacity and overlays.
+The semantic tokens have contrast ratios of 5.12:1, 5.54:1 and 5.24:1 against `surface`, and 4.68:1, 5.07:1 and 4.79:1 against `background`, respectively. Use white (`surface`) text on their filled variants, not `text` (dark purple). The light `border` token is decorative only; use `controlBorder` for necessary control boundaries (3.69:1 against `surface`, 3.37:1 against `background`). Use a distinct visible focus indicator with sufficient contrast against adjacent colors. Never rely on color alone. Do not invent substitute palette colors in individual features. Check actual rendered states, including opacity and overlays.
 
-## 3. Foundation defaults (proposed; not survey values)
+## 3. Foundation defaults
 
-Use logical units (dp on native, CSS px on web at the default scale); text must scale with user settings. Values below refine the qualitative team choices. Centralize them in a shared typed theme at bootstrap; do not duplicate literal values across screens.
+Use logical units (dp on native, CSS px on web at the default scale); text must scale with user settings. Centralize these values in a shared typed theme at bootstrap; do not duplicate literal values across screens.
 
 | Token group | Values / usage |
 |---|---|
@@ -84,11 +83,11 @@ Use a single column for compact card grids and additional columns only when cont
 | Input | Outlined, persistent label, accessible error text; placeholder is not a label. |
 | Notification | Contextual banner for ongoing/relevant information; temporary toast only for noncritical outcomes. Critical notices remain perceivable until resolved/acknowledged as specified; fallback notices must not block communication. |
 | Progress | Show stages only when actual stages are known; otherwise show an indeterminate indicator and truthful status. No fabricated percentage or wait estimate. |
-| Icons | One filled icon family, accessible labels on icon-only controls; critical actions also have visible text. |
+| Icons | Material Design Icons (filled variants), accessible labels on icon-only controls; critical actions also have visible text. |
 
 Use meaningful default, pressed, focused, disabled, loading, error and empty states where applicable; web also supports hover and keyboard focus. Disable only when behavior warrants it. Avoid hiding existing data or actions behind decorative loading. Use shared accessible primitives; do not create screen-specific versions of the same component.
 
-## 5. Navigation and role layouts (team decisions)
+## 5. Navigation and role layouts
 
 - Helper and Supervisor desktop: labeled sidebar. Mobile: bottom navigation bar for authorized primary destinations; provide additional authorized destinations accessibly when needed. Caller: essential navigation always visible; mobile presentation follows bottom navigation where applicable.
 - Caller, Helper and Supervisor dashboards: responsive card grid. Prioritize the role's core actions and current operational status; do not add dashboard metrics, permissions or features solely to fill a grid.
@@ -106,14 +105,13 @@ Use meaningful default, pressed, focused, disabled, loading, error and empty sta
 
 ## 7. Implementation and verification
 
-- At bootstrap, select a compatible shared UI approach and icon family; load Roboto consistently on all targets. Use the canonical brand assets in §1; configure runtime asset locations at bootstrap. Do not introduce a competing UI library or change the brand independently. Theme code implements this document; configuration owns mechanical platform mapping.
+- Use React Native Paper with a shared custom MD3 theme and the Material Design Icons family selected in [Technology Stack](tech-stack.md). Validate library and icon integration at bootstrap; load Roboto consistently on all targets. Use the canonical brand assets in §1; configure runtime asset locations at bootstrap. Do not introduce a competing UI library or change the brand independently. Theme code implements this document; configuration owns mechanical platform mapping.
 - Planner includes relevant visual constraints and testable criteria in UI plans. Implementer reuses shared tokens/components. Independent Tester derives behavioral and accessibility checks from approved specifications, not rendered implementation. Reviewer checks conformance; use existing repair and audit paths without adding agent roles.
 - Prefer deterministic checks: validate declared color pairings in unit tests; verify component labels/states and role-specific interactions using the existing test toolchain. Check responsive layout, critical control visibility and keyboard navigation in relevant web/native integration tests. Use synthetic data; do not capture real conversation content. Include affected shared consumers when a theme change is authorized.
 - Automated accessibility checks can supplement the existing CI after bootstrap validation. No mandatory pixel-perfect snapshot comparison or separate design gate is introduced here. Visual review may use relevant screenshots as evidence, not as an independent source of requirements. Use existing CI commands and machine-readable reports; do not weaken tests to pass. Native/device behavior requires appropriate platform evidence.
-- Pending: PM approval of §3 defaults; UI library/icon family and runtime asset integration (including native launcher assets); alignment with finalized SDD/DPD and TP/TCS; runtime checks across targets. Do not treat these pending details as confirmed survey decisions. Escalate only material uncertainty under the existing pipeline policy.
+- Validate runtime asset integration (including native launcher assets), UI library/icon compatibility and cross-platform behavior against applicable approved specifications.
 
 ## References
 
-- Team survey: E.C.H.O. — Design System | Decisioni del team, collective response dated 2026-11-25. Palette reference: https://coolors.co/663399-7851a9-702670-f6f4f8-ffffff-32174d-6d5b80-d8bfd8-2cc98f-fbbf24 (original team palette; survey semantic colors: success `#2CC98F`, warning `#FBBF24`, danger `#F32B4C`; superseded by the accessibility adaptations in §2).
 - Project: RAD v1.0.0, [Technology Stack](tech-stack.md), [Coding Conventions](coding-conventions.md).
 - [Material Design 3](https://m3.material.io/), [WCAG 2.2](https://www.w3.org/TR/WCAG22/), [React Native accessibility](https://reactnative.dev/docs/accessibility).

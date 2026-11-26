@@ -4,25 +4,30 @@
 
 | Path | Content |
 |---|---|
-| requirements/rad/ | Requirements and analysis models |
-| architecture/sdd/ | System architecture |
-| architecture/dpd/ | Design patterns |
-| traceability/ | Traceability matrix |
-| verification/tp/ | Test plan |
-| verification/tcs/ | Test case specifications |
-| engineering/ | Technology stack, coding conventions and design system |
+| `document-register.yaml` | Baseline versions, status and source locators |
+| `requirements/rad/` | Requirements and analysis models |
+| `architecture/sdd/` | System architecture |
+| `architecture/dpd/` | Design patterns |
+| `traceability/` | Requirement-keyed traceability index |
+| `verification/tp/` | Test plan |
+| `verification/tcs/` | Test case specifications |
+| `engineering/` | Technology stack, coding conventions and design system |
+| `../sources/` | Canonical source documents |
 
-## Rules
+## Baseline
 
-- Check `document-register.yaml` before selecting specifications.
-- Use verified, task-relevant artifacts and applicable cross-cutting constraints.
-- Follow traceability links and model dependencies.
-- Check `requirements/rad/known-issues.md` for unresolved RAD issues.
-- Block tasks only when unresolved specification conflicts materially affect correctness.
-- Verify relevant unverified artifacts against their source when available. Escalate material uncertainties only.
-- Preserve source identifiers, titles, model elements and semantics.
-- Report missing, ambiguous or conflicting specifications.
-- Agents must not modify any file under docs/ground-truth/.
+- Use the document register to select the current baseline. `finalized` denotes a closed source document; `complete` denotes completed extraction within scope; `verified` denotes an accepted operational baseline with integrity and traceability checks and documented exceptions. It does not assert exhaustive semantic equivalence, absence of source defects or product compliance.
+- Approved engineering standards are normative. Their `validation_status` tracks technical integration and enforcement, not approval. Pending documents are unavailable as normative specifications.
+- RAD defines requirements, SDD and DPD define design, TP and TCS define verification obligations, and MT indexes declared relationships. Engineering standards govern implementation within these constraints. Do not resolve material conflicts by inventing requirements or silently overriding a source.
+
+## Context retrieval
+
+1. Select the applicable baseline and requirement IDs; use `traceability/mt.json` to locate relevant artifacts.
+2. Load only task-relevant specifications, model dependencies, cross-cutting constraints and known issues. Apply recorded dispositions; do not treat clarified issues as open decisions.
+3. Consult the relevant original source only if a material discrepancy, omission or ambiguity remains unresolved. Retrieve only the necessary sections, pages or cells; never routinely attach or index entire originals. Do not disclose personal data from source front matter.
+4. Escalate only unresolved material uncertainty or changes requiring human authority. Preserve source identifiers and semantics. Report missing or conflicting specifications without guessing.
+
+All source and artifact paths in the register are relative to this directory. Agents must not modify `docs/ground-truth/` or `docs/sources/`. The harness must enforce protected paths and validate selective source access before enabling it.
 
 ## Engineering Standards
 

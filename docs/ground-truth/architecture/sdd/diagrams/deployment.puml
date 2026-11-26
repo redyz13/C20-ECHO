@@ -1,0 +1,36 @@
+@startuml
+' Source: SDD v1.0.0, section 2.3.1, p. 14.
+node "Client 1 (Web / Mobile)" as C1 <<device>> {
+  node "Web Browser / Mobile OS" as ENV1 <<executionEnvironment>> {
+    artifact "ECHO Frontend\n(React Native / React Native Web + TypeScript)" as FE1
+  }
+}
+node "Client 2 (Web / Mobile)" as C2 <<device>> {
+  node "Web Browser / Mobile OS" as ENV2 <<executionEnvironment>> {
+    artifact "ECHO Frontend\n(React Native / React Native Web + TypeScript)" as FE2
+  }
+}
+node "Application Server" as APP <<device>> {
+  node "Spring Boot (JVM)" <<executionEnvironment>> {
+    artifact "ECHO Backend\n(Java + Spring)"
+  }
+}
+node "STUN / TURN Infrastructure" as ST <<device>> {
+  artifact "Servizi STUN/TURN\n(NAT Traversal & Media Relay)"
+}
+node "External Institutional Services" as EXT <<device>> {
+  artifact "Servizi Istituzionali Simulati\n(External APIs)"
+}
+node "Database Server" as DB <<device>> {
+  node "PostgreSQL" <<executionEnvironment>> {
+    artifact "ECHO DB"
+  }
+}
+C1 <--> C2 : «WebRTC\n(Media & Data P2P)»
+C1 --> APP : «REST / HTTPS»
+C2 --> APP : «REST / HTTPS»
+C1 --> ST : «STUN / TURN (ICE)»
+C2 --> ST : «STUN / TURN (ICE)»
+APP --> EXT : «REST / HTTPS»
+APP --> DB : «JDBC / JPA»
+@enduml

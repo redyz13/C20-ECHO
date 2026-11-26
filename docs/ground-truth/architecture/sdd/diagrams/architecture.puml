@@ -1,0 +1,153 @@
+@startuml
+' Source: SDD v1.0.0, section 2.2.2, p. 13.
+' Unnamed interfaces are represented as directed dependencies.
+top to bottom direction
+skinparam componentStyle uml2
+skinparam shadowing false
+skinparam linetype polyline
+
+package "Presentation layer" {
+  component "GestioneNotificheGUI" as GestioneNotificheGUI
+  component "GestioneAccessoGUI" as GestioneAccessoGUI
+  component "GestioneProfiliGUI" as GestioneProfiliGUI
+  component "GestioneHelperGUI" as GestioneHelperGUI
+  component "GestioneRichiesteGUI" as GestioneRichiesteGUI
+  component "GestioneMatchingGUI" as GestioneMatchingGUI
+  component "GestioneComunicazioneGUI" as GestioneComunicazioneGUI
+  component "GestioneFeedbackGUI" as GestioneFeedbackGUI
+  component "GestioneEscalationGUI" as GestioneEscalationGUI
+  component "GestioneFallbackGUI" as GestioneFallbackGUI
+}
+
+package "Application layer" {
+  component "GestioneNotificheControl" as GestioneNotificheControl
+  component "GestioneAccessoControl" as GestioneAccessoControl
+  component "GestioneProfiliControl" as GestioneProfiliControl
+  component "GestioneHelperControl" as GestioneHelperControl
+  component "GestioneRichiesteControl" as GestioneRichiesteControl
+  component "GestioneMatchingControl" as GestioneMatchingControl
+  component "GestioneComunicazioneControl" as GestioneComunicazioneControl
+  component "GestioneFeedbackControl" as GestioneFeedbackControl
+  component "GestioneEscalationControl" as GestioneEscalationControl
+  component "GestioneFallbackControl" as GestioneFallbackControl
+}
+
+package "Data access layer" {
+  component "NotificheService" as NotificheService
+  component "AccessoService" as AccessoService
+  component "ProfiliService" as ProfiliService
+  component "HelperService" as HelperService
+  component "RichiesteService" as RichiesteService
+  component "MatchingService" as MatchingService
+  component "FeedbackService" as FeedbackService
+  component "EscalationService" as EscalationService
+  component "FallbackService" as FallbackService
+  component "DispositivoDAO" as DispositivoDAO
+  component "AccountDAO" as AccountDAO
+  component "AbilitazioneDAO" as AbilitazioneDAO
+  component "RichiestaDiAiutoDAO" as RichiestaDiAiutoDAO
+  component "FeedbackDAO" as FeedbackDAO
+  component "SegnalazioneDAO" as SegnalazioneDAO
+  component "LogAuditDAO" as LogAuditDAO
+  component "RendicontazioneDAO" as RendicontazioneDAO
+}
+
+package "External Systems / Mocks" {
+  component "Mock SPID/CIE" as MockAuth
+  component "Mock Servizi Emergenza" as MockEmergency
+  component "Mock enti partner" as MockPartner
+  component "Mock geolocalizzazione" as MockGeo
+}
+
+' Provided application interfaces and GUI consumers
+interface "INotifiche" as INotifiche
+GestioneNotificheControl -- INotifiche
+GestioneNotificheGUI ..> INotifiche
+interface "IAccess" as IAccess
+GestioneAccessoControl -- IAccess
+GestioneAccessoGUI ..> IAccess
+interface "IProfili" as IProfili
+GestioneProfiliControl -- IProfili
+GestioneProfiliGUI ..> IProfili
+interface "IHelper" as IHelper
+GestioneHelperControl -- IHelper
+GestioneHelperGUI ..> IHelper
+interface "IRichieste" as IRichieste
+GestioneRichiesteControl -- IRichieste
+GestioneRichiesteGUI ..> IRichieste
+interface "IMatching" as IMatching
+GestioneMatchingControl -- IMatching
+GestioneMatchingGUI ..> IMatching
+interface "IComunicazione" as IComunicazione
+GestioneComunicazioneControl -- IComunicazione
+GestioneComunicazioneGUI ..> IComunicazione
+interface "IFeedback" as IFeedback
+GestioneFeedbackControl -- IFeedback
+GestioneFeedbackGUI ..> IFeedback
+interface "ISafeEscalation" as ISafeEscalation
+GestioneEscalationControl -- ISafeEscalation
+GestioneEscalationGUI ..> ISafeEscalation
+interface "IFallBack" as IFallBack
+GestioneFallbackControl -- IFallBack
+GestioneFallbackGUI ..> IFallBack
+
+' Inter-control dependencies as shown in section 2.2.2 (not copied from the subsystem tables).
+GestioneRichiesteControl ..> IMatching
+GestioneRichiesteControl ..> IComunicazione
+GestioneMatchingControl ..> IHelper
+GestioneMatchingControl ..> IFeedback
+GestioneMatchingControl ..> INotifiche
+GestioneFeedbackControl ..> INotifiche
+GestioneEscalationControl ..> IFallBack
+GestioneEscalationControl ..> INotifiche
+GestioneFallbackControl ..> ISafeEscalation
+GestioneAccessoControl ..> IHelper
+GestioneProfiliControl ..> IFeedback
+GestioneHelperControl ..> IProfili
+GestioneRichiesteControl ..> IFeedback
+GestioneMatchingControl ..> IRichieste
+GestioneComunicazioneControl ..> IRichieste
+GestioneFeedbackControl ..> IRichieste
+GestioneEscalationControl ..> IProfili
+GestioneFallbackControl ..> INotifiche
+
+' Control-to-Service dependencies. No ComunicazioneService is present in the original.
+GestioneNotificheControl ..> NotificheService
+GestioneAccessoControl ..> AccessoService
+GestioneProfiliControl ..> ProfiliService
+GestioneHelperControl ..> HelperService
+GestioneRichiesteControl ..> RichiesteService
+GestioneMatchingControl ..> MatchingService
+GestioneFeedbackControl ..> FeedbackService
+GestioneEscalationControl ..> EscalationService
+GestioneFallbackControl ..> FallbackService
+
+' Service-to-DAO dependencies (shared unlabeled interfaces collapsed).
+NotificheService ..> DispositivoDAO
+AccessoService ..> DispositivoDAO
+AccessoService ..> AccountDAO
+ProfiliService ..> AccountDAO
+HelperService ..> AbilitazioneDAO
+RichiesteService ..> RichiestaDiAiutoDAO
+MatchingService ..> RichiestaDiAiutoDAO
+FeedbackService ..> FeedbackDAO
+EscalationService ..> SegnalazioneDAO
+EscalationService ..> LogAuditDAO
+FallbackService ..> LogAuditDAO
+FallbackService ..> RendicontazioneDAO
+
+' External interfaces
+interface "IAuth" as IAuth
+MockAuth -- IAuth
+GestioneAccessoControl ..> IAuth
+interface "IServiziEsterni" as IServiziEsterni
+MockEmergency -- IServiziEsterni
+GestioneEscalationControl ..> IServiziEsterni
+interface "IEntiPartner" as IEntiPartner
+MockPartner -- IEntiPartner
+GestioneHelperControl ..> IEntiPartner
+interface "IGeolocalizzazione" as IGeolocalizzazione
+MockGeo -- IGeolocalizzazione
+GestioneEscalationControl ..> IGeolocalizzazione
+
+@enduml

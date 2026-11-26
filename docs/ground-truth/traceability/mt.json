@@ -1,0 +1,2658 @@
+{
+  "schema_version": 1,
+  "source": {
+    "document": "MT",
+    "filename": "C20_E.C.H.O._MT.xlsx",
+    "version": "1.0",
+    "sheets": {
+      "functional": "Requisiti funzionali",
+      "non_functional": "Requisiti non funzionali"
+    }
+  },
+  "functional": {
+    "RF_GA_1": {
+      "source_row": 2,
+      "scenarios": [
+        "SC_GA_01",
+        "SC_GA_02"
+      ],
+      "use_cases": [
+        "UC_AO",
+        "UC_ACM"
+      ],
+      "analysis_objects": [
+        "AccountUtente",
+        "SessioneUtente",
+        "AccessoUtente",
+        "InterfacciaAutenticazione",
+        "InterfacciaPiattaforma"
+      ],
+      "sequence_diagrams": [
+        "Non specificato"
+      ],
+      "statecharts": [
+        "Non specificato"
+      ],
+      "mockups": [
+        "Non specificato"
+      ],
+      "sdd_services": [
+        "Accesso e tutela minori – Registrazione con SPID/CIE"
+      ],
+      "related_rnfs": [
+        "RNF_P_1",
+        "RNF_I_1",
+        "RNF_IN_1"
+      ],
+      "architecture_technology": [
+        "Three-Tier (Presentation/Application/Data)",
+        "React Native + TypeScript",
+        "Java Spring",
+        "API REST (HTTPS)",
+        "PostgreSQL"
+      ],
+      "rad_notes": "RAD Pag. 14. Accesso ordinario: UC_AO. Accesso del Caller minorenne: UC_ACM.",
+      "target_files": [
+        "requirements/rad/functional/RF_GA.md",
+        "requirements/rad/scenarios/SC_GA_01.md",
+        "requirements/rad/scenarios/SC_GA_02.md",
+        "requirements/rad/use-cases/UC_AO.md",
+        "requirements/rad/use-cases/UC_ACM.md",
+        "requirements/rad/object-model.md",
+        "architecture/sdd/subsystems/IAccess.md",
+        "requirements/rad/non-functional/requirements.md"
+      ]
+    },
+    "RF_GA_2": {
+      "source_row": 3,
+      "scenarios": [
+        "SC_GA_03"
+      ],
+      "use_cases": [
+        "UC_ACM"
+      ],
+      "analysis_objects": [
+        "Dispositivo",
+        "SAPControl",
+        "QuestionarioForm",
+        "AreaOspite",
+        "InterfacciaPiattaforma",
+        "SessioneUtente"
+      ],
+      "sequence_diagrams": [
+        "SD 1 – Safe Access Path (SD_UC_02)"
+      ],
+      "statecharts": [
+        "Non specificato"
+      ],
+      "mockups": [
+        "Non specificato"
+      ],
+      "sdd_services": [
+        "Accesso e tutela minori – Attivazione del Safe Access Path",
+        "Profili e Sicurezza Account – Mitigazione degli abusi del Safe Access Path"
+      ],
+      "related_rnfs": [
+        "Nessuno"
+      ],
+      "architecture_technology": [
+        "Presentation/Application/Data Tier",
+        "React Native + TypeScript",
+        "Java Spring",
+        "API REST (HTTPS)",
+        "PostgreSQL (tracciamento dispositivo/limiti)"
+      ],
+      "rad_notes": "RAD Pag. 14",
+      "target_files": [
+        "requirements/rad/functional/RF_GA.md",
+        "requirements/rad/scenarios/SC_GA_03.md",
+        "requirements/rad/use-cases/UC_ACM.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/sequence/SD1.puml",
+        "architecture/sdd/subsystems/IAccess.md",
+        "architecture/sdd/subsystems/IProfili.md"
+      ]
+    },
+    "RF_GA_3": {
+      "source_row": 4,
+      "scenarios": [
+        "SC_GA_02"
+      ],
+      "use_cases": [
+        "UC_ACM"
+      ],
+      "analysis_objects": [
+        "AccountUtente",
+        "AccessoUtente",
+        "InterfacciaAutenticazione",
+        "InterfacciaPiattaforma"
+      ],
+      "sequence_diagrams": [
+        "Non specificato"
+      ],
+      "statecharts": [
+        "Non specificato"
+      ],
+      "mockups": [
+        "Non specificato"
+      ],
+      "sdd_services": [
+        "Accesso e tutela minori – Autorizzazione genitoriale"
+      ],
+      "related_rnfs": [
+        "RNF_P_1",
+        "RNF_I_1",
+        "RNF_IN_1",
+        "RNF_L_4"
+      ],
+      "architecture_technology": [
+        "Three-Tier",
+        "React Native + TypeScript",
+        "Java Spring",
+        "API REST (HTTPS)",
+        "PostgreSQL"
+      ],
+      "rad_notes": "RAD Pag. 14",
+      "target_files": [
+        "requirements/rad/functional/RF_GA.md",
+        "requirements/rad/scenarios/SC_GA_02.md",
+        "requirements/rad/use-cases/UC_ACM.md",
+        "requirements/rad/object-model.md",
+        "architecture/sdd/subsystems/IAccess.md",
+        "requirements/rad/non-functional/requirements.md"
+      ]
+    },
+    "RF_GA_4": {
+      "source_row": 5,
+      "scenarios": [
+        "SC_GA_01",
+        "SC_GA_02"
+      ],
+      "use_cases": [
+        "UC_AO",
+        "UC_ACM"
+      ],
+      "analysis_objects": [
+        "AccountUtente",
+        "SessioneUtente",
+        "AccessoUtente",
+        "InterfacciaAutenticazione",
+        "InterfacciaPiattaforma"
+      ],
+      "sequence_diagrams": [
+        "Non specificato"
+      ],
+      "statecharts": [
+        "Non specificato"
+      ],
+      "mockups": [
+        "Non specificato"
+      ],
+      "sdd_services": [
+        "Accesso e tutela minori – Login e logout"
+      ],
+      "related_rnfs": [
+        "RNF_IN_1",
+        "RNF_P_1",
+        "RNF_I_1"
+      ],
+      "architecture_technology": [
+        "Three-Tier",
+        "React Native + TypeScript",
+        "Java Spring",
+        "API REST (HTTPS)",
+        "PostgreSQL"
+      ],
+      "rad_notes": "RAD Pag. 14",
+      "target_files": [
+        "requirements/rad/functional/RF_GA.md",
+        "requirements/rad/scenarios/SC_GA_01.md",
+        "requirements/rad/scenarios/SC_GA_02.md",
+        "requirements/rad/use-cases/UC_AO.md",
+        "requirements/rad/use-cases/UC_ACM.md",
+        "requirements/rad/object-model.md",
+        "architecture/sdd/subsystems/IAccess.md",
+        "requirements/rad/non-functional/requirements.md"
+      ]
+    },
+    "RF_GA_5": {
+      "source_row": 6,
+      "scenarios": [
+        "Non specificato"
+      ],
+      "use_cases": [
+        "Logout (diagramma dei casi d’uso, RAD p. 40)"
+      ],
+      "analysis_objects": [
+        "SessioneUtente",
+        "AccessoUtente",
+        "InterfacciaPiattaforma"
+      ],
+      "sequence_diagrams": [
+        "Non specificato"
+      ],
+      "statecharts": [
+        "Non specificato"
+      ],
+      "mockups": [
+        "Mock-up Caller – Profilo Utente",
+        "Helper – Profilo",
+        "Supervisor – Profilo Supervisor"
+      ],
+      "sdd_services": [
+        "Accesso e tutela minori – Login e logout"
+      ],
+      "related_rnfs": [
+        "Nessuno"
+      ],
+      "architecture_technology": [
+        "Presentation/Application Tier",
+        "React Native + TypeScript",
+        "Java Spring",
+        "API REST (HTTPS)"
+      ],
+      "rad_notes": "RAD Pag. 15",
+      "target_files": [
+        "requirements/rad/functional/RF_GA.md",
+        "requirements/rad/diagrams/use-case/UC_AO.puml",
+        "requirements/rad/object-model.md",
+        "architecture/sdd/subsystems/IAccess.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "mockups",
+          "reference": "Mock-up Caller – Profilo Utente",
+          "note": "Mock-up reference; not part of the extracted scope."
+        },
+        {
+          "field": "mockups",
+          "reference": "Helper – Profilo",
+          "note": "Mock-up reference; not part of the extracted scope."
+        },
+        {
+          "field": "mockups",
+          "reference": "Supervisor – Profilo Supervisor",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RF_GA_6": {
+      "source_row": 7,
+      "scenarios": [
+        "SC_GA_04"
+      ],
+      "use_cases": [
+        "UC_AO",
+        "UC_ACM"
+      ],
+      "analysis_objects": [
+        "QuestionarioForm",
+        "AccessoUtente",
+        "InterfacciaPiattaforma",
+        "InterfacciaAutenticazione"
+      ],
+      "sequence_diagrams": [
+        "Non specificato"
+      ],
+      "statecharts": [
+        "Non specificato"
+      ],
+      "mockups": [
+        "Non specificato"
+      ],
+      "sdd_services": [
+        "Accesso e tutela minori – Verifica dell'età minima"
+      ],
+      "related_rnfs": [
+        "RNF_P_1",
+        "RNF_I_1",
+        "RNF_IN_1"
+      ],
+      "architecture_technology": [
+        "Presentation/Application Tier",
+        "React Native + TypeScript",
+        "Java Spring",
+        "API REST (HTTPS)"
+      ],
+      "rad_notes": "RAD Pag. 15",
+      "target_files": [
+        "requirements/rad/functional/RF_GA.md",
+        "requirements/rad/scenarios/SC_GA_04.md",
+        "requirements/rad/use-cases/UC_AO.md",
+        "requirements/rad/use-cases/UC_ACM.md",
+        "requirements/rad/object-model.md",
+        "architecture/sdd/subsystems/IAccess.md",
+        "requirements/rad/non-functional/requirements.md"
+      ]
+    },
+    "RF_GA_7": {
+      "source_row": 8,
+      "scenarios": [
+        "Non specificato"
+      ],
+      "use_cases": [
+        "Non specificato"
+      ],
+      "analysis_objects": [
+        "AccountUtente",
+        "AccessoUtente",
+        "InterfacciaPiattaforma"
+      ],
+      "sequence_diagrams": [
+        "Non specificato"
+      ],
+      "statecharts": [
+        "Non specificato"
+      ],
+      "mockups": [
+        "Non specificato"
+      ],
+      "sdd_services": [
+        "Profili e Sicurezza Account – Eliminazione dell'account"
+      ],
+      "related_rnfs": [
+        "RNF_S_1",
+        "RNF_L_1"
+      ],
+      "architecture_technology": [
+        "Three-Tier",
+        "React Native + TypeScript",
+        "Java Spring",
+        "API REST (HTTPS)",
+        "PostgreSQL (integrità referenziale e cancellazione)"
+      ],
+      "rad_notes": "RAD Pag. 15",
+      "target_files": [
+        "requirements/rad/functional/RF_GA.md",
+        "requirements/rad/object-model.md",
+        "architecture/sdd/subsystems/IProfili.md",
+        "requirements/rad/non-functional/requirements.md"
+      ]
+    },
+    "RF_GA_8": {
+      "source_row": 9,
+      "scenarios": [
+        "Non specificato"
+      ],
+      "use_cases": [
+        "UC_ACM"
+      ],
+      "analysis_objects": [
+        "Dispositivo",
+        "SAPControl",
+        "QuestionarioForm",
+        "AreaOspite"
+      ],
+      "sequence_diagrams": [
+        "SD 1 – Safe Access Path"
+      ],
+      "statecharts": [
+        "Non specificato"
+      ],
+      "mockups": [
+        "Mock-up Helper – Reports (Safe Access Path)"
+      ],
+      "sdd_services": [
+        "Feedback e Segnalazioni – Segnalazioni di utilizzo improprio Safe Access Path",
+        "Profili e Sicurezza Account – Mitigazione degli abusi del Safe Access Path"
+      ],
+      "related_rnfs": [
+        "Nessuno"
+      ],
+      "architecture_technology": [
+        "Three-Tier",
+        "React Native + TypeScript",
+        "Java Spring",
+        "API REST (HTTPS)",
+        "PostgreSQL"
+      ],
+      "rad_notes": "RAD Pag. 15",
+      "target_files": [
+        "requirements/rad/functional/RF_GA.md",
+        "requirements/rad/use-cases/UC_ACM.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/sequence/SD1.puml",
+        "architecture/sdd/subsystems/IFeedback.md",
+        "architecture/sdd/subsystems/IProfili.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "mockups",
+          "reference": "Mock-up Helper – Reports (Safe Access Path)",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RF_GU_1": {
+      "source_row": 10,
+      "scenarios": [
+        "SC_GU_01",
+        "SC_GU_02"
+      ],
+      "use_cases": [
+        "UC_GU"
+      ],
+      "analysis_objects": [
+        "ProfiloUtente",
+        "Abilitazione",
+        "GestioneAbilitazioniControl",
+        "GestioneHelperUI",
+        "EntePartnerUI"
+      ],
+      "sequence_diagrams": [
+        "Non specificato"
+      ],
+      "statecharts": [
+        "Non specificato"
+      ],
+      "mockups": [
+        "Mock-up Supervisor – Area di Gestione Account Helper",
+        "Helper – Profilo"
+      ],
+      "sdd_services": [
+        "Helper e Abilitazione – Gestione delle abilitazioni Helper"
+      ],
+      "related_rnfs": [
+        "RNF_P_1",
+        "RNF_IN_2",
+        "RNF_I_1"
+      ],
+      "architecture_technology": [
+        "Three-Tier",
+        "React Native + TypeScript",
+        "Java Spring",
+        "API REST (HTTPS)",
+        "PostgreSQL"
+      ],
+      "rad_notes": "RAD Pag. 16",
+      "target_files": [
+        "requirements/rad/functional/RF_GU.md",
+        "requirements/rad/scenarios/SC_GU_01.md",
+        "requirements/rad/scenarios/SC_GU_02.md",
+        "requirements/rad/use-cases/UC_GU.md",
+        "requirements/rad/object-model.md",
+        "architecture/sdd/subsystems/IHelper.md",
+        "requirements/rad/non-functional/requirements.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "mockups",
+          "reference": "Mock-up Supervisor – Area di Gestione Account Helper",
+          "note": "Mock-up reference; not part of the extracted scope."
+        },
+        {
+          "field": "mockups",
+          "reference": "Helper – Profilo",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RF_GU_2": {
+      "source_row": 11,
+      "scenarios": [
+        "Non specificato"
+      ],
+      "use_cases": [
+        "Non specificato"
+      ],
+      "analysis_objects": [
+        "ProfiloUtente",
+        "Abilitazione"
+      ],
+      "sequence_diagrams": [
+        "Non specificato"
+      ],
+      "statecharts": [
+        "Non specificato"
+      ],
+      "mockups": [
+        "Mock-up Supervisor – Profilo Supervisor (abilitazione visualizzata)"
+      ],
+      "sdd_services": [
+        "Helper e Abilitazione – Verifica dell'abilitazione di Supervisor"
+      ],
+      "related_rnfs": [
+        "Nessuno"
+      ],
+      "architecture_technology": [
+        "Three-Tier",
+        "Java Spring",
+        "PostgreSQL"
+      ],
+      "rad_notes": "RAD Pag. 16",
+      "target_files": [
+        "requirements/rad/functional/RF_GU.md",
+        "requirements/rad/object-model.md",
+        "architecture/sdd/subsystems/IHelper.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "mockups",
+          "reference": "Mock-up Supervisor – Profilo Supervisor (abilitazione visualizzata)",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RF_GU_3": {
+      "source_row": 12,
+      "scenarios": [
+        "Non specificato"
+      ],
+      "use_cases": [
+        "Non specificato"
+      ],
+      "analysis_objects": [
+        "Disponibilita",
+        "GestioneDisponibilitaControl",
+        "GestioneDisponibilitaUI"
+      ],
+      "sequence_diagrams": [
+        "Non specificato"
+      ],
+      "statecharts": [
+        "Non specificato"
+      ],
+      "mockups": [
+        "Mock-up Helper – Disponibilità"
+      ],
+      "sdd_services": [
+        "Helper e Abilitazione – Gestione della disponibilità"
+      ],
+      "related_rnfs": [
+        "Nessuno"
+      ],
+      "architecture_technology": [
+        "Three-Tier",
+        "React Native + TypeScript",
+        "Java Spring",
+        "API REST (HTTPS)",
+        "PostgreSQL"
+      ],
+      "rad_notes": "RAD Pag. 16",
+      "target_files": [
+        "requirements/rad/functional/RF_GU.md",
+        "requirements/rad/object-model.md",
+        "architecture/sdd/subsystems/IHelper.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "mockups",
+          "reference": "Mock-up Helper – Disponibilità",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RF_GU_4": {
+      "source_row": 13,
+      "scenarios": [
+        "Non specificato"
+      ],
+      "use_cases": [
+        "Non specificato"
+      ],
+      "analysis_objects": [
+        "ProfiloUtente",
+        "GestioneProfiloControl",
+        "ProfiloUtenteUI"
+      ],
+      "sequence_diagrams": [
+        "Non specificato"
+      ],
+      "statecharts": [
+        "Non specificato"
+      ],
+      "mockups": [
+        "Mock-up Caller – Profilo Utente",
+        "Helper – Profilo",
+        "Supervisor – Profilo Supervisor"
+      ],
+      "sdd_services": [
+        "Profili e Sicurezza Account – Visualizzazione del profilo"
+      ],
+      "related_rnfs": [
+        "Nessuno"
+      ],
+      "architecture_technology": [
+        "Three-Tier",
+        "React Native + TypeScript",
+        "Java Spring",
+        "API REST (HTTPS)",
+        "PostgreSQL"
+      ],
+      "rad_notes": "RAD Pag. 16",
+      "target_files": [
+        "requirements/rad/functional/RF_GU.md",
+        "requirements/rad/object-model.md",
+        "architecture/sdd/subsystems/IProfili.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "mockups",
+          "reference": "Mock-up Caller – Profilo Utente",
+          "note": "Mock-up reference; not part of the extracted scope."
+        },
+        {
+          "field": "mockups",
+          "reference": "Helper – Profilo",
+          "note": "Mock-up reference; not part of the extracted scope."
+        },
+        {
+          "field": "mockups",
+          "reference": "Supervisor – Profilo Supervisor",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RF_GU_5": {
+      "source_row": 14,
+      "scenarios": [
+        "Non specificato"
+      ],
+      "use_cases": [
+        "Non specificato"
+      ],
+      "analysis_objects": [
+        "ProfiloUtente",
+        "GestioneProfiloControl",
+        "ProfiloUtenteUI"
+      ],
+      "sequence_diagrams": [
+        "Non specificato"
+      ],
+      "statecharts": [
+        "Non specificato"
+      ],
+      "mockups": [
+        "Mock-up Caller – Profilo Utente",
+        "Helper – Profilo"
+      ],
+      "sdd_services": [
+        "Profili e Sicurezza Account – Modifica del profilo"
+      ],
+      "related_rnfs": [
+        "Nessuno"
+      ],
+      "architecture_technology": [
+        "Three-Tier",
+        "React Native + TypeScript",
+        "Java Spring",
+        "API REST (HTTPS)",
+        "PostgreSQL"
+      ],
+      "rad_notes": "RAD Pag. 16",
+      "target_files": [
+        "requirements/rad/functional/RF_GU.md",
+        "requirements/rad/object-model.md",
+        "architecture/sdd/subsystems/IProfili.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "mockups",
+          "reference": "Mock-up Caller – Profilo Utente",
+          "note": "Mock-up reference; not part of the extracted scope."
+        },
+        {
+          "field": "mockups",
+          "reference": "Helper – Profilo",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RF_GAI_1": {
+      "source_row": 15,
+      "scenarios": [
+        "SC_GAI_02"
+      ],
+      "use_cases": [
+        "UC_GAI"
+      ],
+      "analysis_objects": [
+        "RichiestaAscolto",
+        "RichiestaAscoltoController",
+        "AreaPersonaleUI",
+        "RichiestaAscoltoUI (SD 2)"
+      ],
+      "sequence_diagrams": [
+        "SD 2 – Richiesta di ascolto e matching"
+      ],
+      "statecharts": [
+        "SCD 1 – Ciclo di vita della richiesta di aiuto"
+      ],
+      "mockups": [
+        "Mock-up Caller – Dashboard"
+      ],
+      "sdd_services": [
+        "Richieste di Ascolto – Creazione e invio della richiesta"
+      ],
+      "related_rnfs": [
+        "RNF_U_3",
+        "RNF_L_4"
+      ],
+      "architecture_technology": [
+        "Three-Tier",
+        "React Native + TypeScript",
+        "Java Spring",
+        "API REST (HTTPS)",
+        "PostgreSQL"
+      ],
+      "rad_notes": "RAD Pag. 17",
+      "target_files": [
+        "requirements/rad/functional/RF_GAI.md",
+        "requirements/rad/scenarios/SC_GAI_02.md",
+        "requirements/rad/use-cases/UC_GAI.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/sequence/SD2.puml",
+        "requirements/rad/diagrams/statechart/SCD1.puml",
+        "architecture/sdd/subsystems/IRichieste.md",
+        "requirements/rad/non-functional/requirements.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "analysis_objects",
+          "reference": "RichiestaAscoltoUI (SD 2)",
+          "note": "Named object not present under this exact name in the RAD Object Model; SD2 is explicitly cited."
+        },
+        {
+          "field": "mockups",
+          "reference": "Mock-up Caller – Dashboard",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RF_GAI_2": {
+      "source_row": 16,
+      "scenarios": [
+        "SC_GAI_01",
+        "SC_GAI_02"
+      ],
+      "use_cases": [
+        "UC_GAI"
+      ],
+      "analysis_objects": [
+        "RichiestaAscolto",
+        "HelperRepository",
+        "RichiestaAscoltoController",
+        "AreaPersonaleUI",
+        "HelperDashboard",
+        "Disponibilita",
+        "Abilitazione"
+      ],
+      "sequence_diagrams": [
+        "SD 2 – Richiesta di ascolto e matching"
+      ],
+      "statecharts": [
+        "SCD 1 – Ciclo di vita della richiesta di aiuto"
+      ],
+      "mockups": [
+        "Mock-up Caller – Dashboard",
+        "Helper – Dashboard"
+      ],
+      "sdd_services": [
+        "Matching e presa in carico – Individuazione degli Helper idonei",
+        "Feedback e Segnalazioni – Affinità Caller–Helper",
+        "Helper e Abilitazione (abilitazioni e disponibilità)"
+      ],
+      "related_rnfs": [
+        "RNF_L_4"
+      ],
+      "architecture_technology": [
+        "Application/Data Tier",
+        "Java Spring (algoritmo matching deterministico)",
+        "PostgreSQL"
+      ],
+      "rad_notes": "RAD Pag. 17",
+      "target_files": [
+        "requirements/rad/functional/RF_GAI.md",
+        "requirements/rad/scenarios/SC_GAI_01.md",
+        "requirements/rad/scenarios/SC_GAI_02.md",
+        "requirements/rad/use-cases/UC_GAI.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/sequence/SD2.puml",
+        "requirements/rad/diagrams/statechart/SCD1.puml",
+        "architecture/sdd/subsystems/IMatching.md",
+        "architecture/sdd/subsystems/IFeedback.md",
+        "architecture/sdd/subsystems/IHelper.md",
+        "requirements/rad/non-functional/requirements.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "mockups",
+          "reference": "Mock-up Caller – Dashboard",
+          "note": "Mock-up reference; not part of the extracted scope."
+        },
+        {
+          "field": "mockups",
+          "reference": "Helper – Dashboard",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RF_GAI_3": {
+      "source_row": 17,
+      "scenarios": [
+        "SC_GAI_02"
+      ],
+      "use_cases": [
+        "UC_GAI"
+      ],
+      "analysis_objects": [
+        "RichiestaAscolto",
+        "RichiestaAscoltoController",
+        "HelperDashboard"
+      ],
+      "sequence_diagrams": [
+        "SD 2 – Richiesta di ascolto e matching"
+      ],
+      "statecharts": [
+        "SCD 1 – Ciclo di vita della richiesta di aiuto"
+      ],
+      "mockups": [
+        "Mock-up Helper – Dashboard"
+      ],
+      "sdd_services": [
+        "Matching e presa in carico – Proposta di presa in carico",
+        "Gestione Notifiche – Ritiro delle notifiche"
+      ],
+      "related_rnfs": [
+        "RNF_U_3",
+        "RNF_L_4"
+      ],
+      "architecture_technology": [
+        "Three-Tier",
+        "React Native + TypeScript",
+        "Java Spring",
+        "API REST (HTTPS)",
+        "PostgreSQL"
+      ],
+      "rad_notes": "RAD Pag. 17",
+      "target_files": [
+        "requirements/rad/functional/RF_GAI.md",
+        "requirements/rad/scenarios/SC_GAI_02.md",
+        "requirements/rad/use-cases/UC_GAI.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/sequence/SD2.puml",
+        "requirements/rad/diagrams/statechart/SCD1.puml",
+        "architecture/sdd/subsystems/IMatching.md",
+        "architecture/sdd/subsystems/INotifiche.md",
+        "requirements/rad/non-functional/requirements.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "mockups",
+          "reference": "Mock-up Helper – Dashboard",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RF_GAI_4": {
+      "source_row": 18,
+      "scenarios": [
+        "SC_GAI_01"
+      ],
+      "use_cases": [
+        "UC_GAI"
+      ],
+      "analysis_objects": [
+        "RichiestaAscolto",
+        "HelperRepository",
+        "RichiestaAscoltoController",
+        "HelperDashboard"
+      ],
+      "sequence_diagrams": [
+        "SD 2 – Richiesta di ascolto e matching"
+      ],
+      "statecharts": [
+        "SCD 1 – Ciclo di vita della richiesta di aiuto"
+      ],
+      "mockups": [
+        "Mock-up Helper – Dashboard"
+      ],
+      "sdd_services": [
+        "Matching e presa in carico – Rifiuto, mancata risposta e riassegnazione",
+        "Gestione Notifiche – Ritiro delle notifiche"
+      ],
+      "related_rnfs": [
+        "RNF_U_3"
+      ],
+      "architecture_technology": [
+        "Three-Tier",
+        "React Native + TypeScript",
+        "Java Spring",
+        "API REST (HTTPS)",
+        "PostgreSQL"
+      ],
+      "rad_notes": "RAD Pag. 17",
+      "target_files": [
+        "requirements/rad/functional/RF_GAI.md",
+        "requirements/rad/scenarios/SC_GAI_01.md",
+        "requirements/rad/use-cases/UC_GAI.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/sequence/SD2.puml",
+        "requirements/rad/diagrams/statechart/SCD1.puml",
+        "architecture/sdd/subsystems/IMatching.md",
+        "architecture/sdd/subsystems/INotifiche.md",
+        "requirements/rad/non-functional/requirements.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "mockups",
+          "reference": "Mock-up Helper – Dashboard",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RF_GAI_5": {
+      "source_row": 19,
+      "scenarios": [
+        "SC_GAI_01"
+      ],
+      "use_cases": [
+        "UC_GAI"
+      ],
+      "analysis_objects": [
+        "RichiestaAscolto",
+        "HelperRepository",
+        "RichiestaAscoltoController",
+        "AreaPersonaleUI"
+      ],
+      "sequence_diagrams": [
+        "SD 2 – Richiesta di ascolto e matching"
+      ],
+      "statecharts": [
+        "SCD 1 – Ciclo di vita della richiesta di aiuto"
+      ],
+      "mockups": [
+        "Non specificato"
+      ],
+      "sdd_services": [
+        "Matching e presa in carico – Gestione dell'indisponibilità",
+        "Gestione Notifiche – Invio delle notifiche"
+      ],
+      "related_rnfs": [
+        "Nessuno"
+      ],
+      "architecture_technology": [
+        "Presentation/Application Tier",
+        "React Native + TypeScript",
+        "Java Spring",
+        "API REST (HTTPS)"
+      ],
+      "rad_notes": "RAD Pag. 17",
+      "target_files": [
+        "requirements/rad/functional/RF_GAI.md",
+        "requirements/rad/scenarios/SC_GAI_01.md",
+        "requirements/rad/use-cases/UC_GAI.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/sequence/SD2.puml",
+        "requirements/rad/diagrams/statechart/SCD1.puml",
+        "architecture/sdd/subsystems/IMatching.md",
+        "architecture/sdd/subsystems/INotifiche.md"
+      ]
+    },
+    "RF_GAI_6": {
+      "source_row": 20,
+      "scenarios": [
+        "SC_GAI_01",
+        "SC_GAI_02"
+      ],
+      "use_cases": [
+        "UC_GAI"
+      ],
+      "analysis_objects": [
+        "RichiestaAscolto",
+        "RichiestaAscoltoController",
+        "AreaPersonaleUI",
+        "HelperDashboard"
+      ],
+      "sequence_diagrams": [
+        "SD 2 – Richiesta di ascolto e matching"
+      ],
+      "statecharts": [
+        "SCD 1 – Ciclo di vita della richiesta di aiuto"
+      ],
+      "mockups": [
+        "Non specificato"
+      ],
+      "sdd_services": [
+        "Richieste di Ascolto – Annullamento della richiesta",
+        "Richieste di Ascolto – Stato della richiesta",
+        "Gestione Notifiche – Ritiro delle notifiche"
+      ],
+      "related_rnfs": [
+        "Nessuno"
+      ],
+      "architecture_technology": [
+        "Three-Tier",
+        "React Native + TypeScript",
+        "Java Spring",
+        "API REST (HTTPS)",
+        "PostgreSQL"
+      ],
+      "rad_notes": "RAD Pag. 17",
+      "target_files": [
+        "requirements/rad/functional/RF_GAI.md",
+        "requirements/rad/scenarios/SC_GAI_01.md",
+        "requirements/rad/scenarios/SC_GAI_02.md",
+        "requirements/rad/use-cases/UC_GAI.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/sequence/SD2.puml",
+        "requirements/rad/diagrams/statechart/SCD1.puml",
+        "architecture/sdd/subsystems/IRichieste.md",
+        "architecture/sdd/subsystems/INotifiche.md"
+      ]
+    },
+    "RF_GC_1": {
+      "source_row": 21,
+      "scenarios": [
+        "SC_GAI_02",
+        "SC_GSE_01"
+      ],
+      "use_cases": [
+        "UC_GAI",
+        "UC_CS"
+      ],
+      "analysis_objects": [
+        "SessioneAscolto",
+        "GestioneSessioneControl",
+        "ChatTestualeUI"
+      ],
+      "sequence_diagrams": [
+        "SD 2 – Rif. 4: Avvio Sessione di Ascolto e Notifica"
+      ],
+      "statecharts": [
+        "Non specificato"
+      ],
+      "mockups": [
+        "Mock-up Caller – Chiamata/chat"
+      ],
+      "sdd_services": [
+        "Comunicazione e Sessione – Chat testuale",
+        "Comunicazione e Sessione – Avvio della sessione"
+      ],
+      "related_rnfs": [
+        "RNF_A_2",
+        "RNF_A_3",
+        "RNF_A_4",
+        "RNF_L_4"
+      ],
+      "architecture_technology": [
+        "Presentation Tier (React Native + TypeScript)",
+        "WebRTC."
+      ],
+      "rad_notes": "RAD Pag. 18",
+      "target_files": [
+        "requirements/rad/functional/RF_GC.md",
+        "requirements/rad/scenarios/SC_GAI_02.md",
+        "requirements/rad/scenarios/SC_GSE_01.md",
+        "requirements/rad/use-cases/UC_GAI.md",
+        "requirements/rad/use-cases/UC_CS.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/sequence/SD2_ref4.puml",
+        "architecture/sdd/subsystems/IComunicazione.md",
+        "requirements/rad/non-functional/requirements.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "mockups",
+          "reference": "Mock-up Caller – Chiamata/chat",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RF_GC_2": {
+      "source_row": 22,
+      "scenarios": [
+        "SC_GAI_02",
+        "SC_GC_01",
+        "SC_GC_02"
+      ],
+      "use_cases": [
+        "UC_GAI",
+        "UC_CS"
+      ],
+      "analysis_objects": [
+        "SessioneAscolto",
+        "GestioneSessioneControl",
+        "ChiamataAudioUI"
+      ],
+      "sequence_diagrams": [
+        "SD 2 – Rif. 4: Avvio Sessione di Ascolto e Notifica"
+      ],
+      "statecharts": [
+        "Non specificato"
+      ],
+      "mockups": [
+        "Mock-up Helper – Sessione attiva"
+      ],
+      "sdd_services": [
+        "Comunicazione e Sessione – Chiamata audio",
+        "Comunicazione e Sessione – Avvio della sessione"
+      ],
+      "related_rnfs": [
+        "RNF_A_2",
+        "RNF_A_3",
+        "RNF_A_4",
+        "RNF_I_2",
+        "RNF_L_4"
+      ],
+      "architecture_technology": [
+        "Presentation Tier (React Native + TypeScript)",
+        "WebRTC."
+      ],
+      "rad_notes": "RAD Pag. 18",
+      "target_files": [
+        "requirements/rad/functional/RF_GC.md",
+        "requirements/rad/scenarios/SC_GAI_02.md",
+        "requirements/rad/scenarios/SC_GC_01.md",
+        "requirements/rad/scenarios/SC_GC_02.md",
+        "requirements/rad/use-cases/UC_GAI.md",
+        "requirements/rad/use-cases/UC_CS.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/sequence/SD2_ref4.puml",
+        "architecture/sdd/subsystems/IComunicazione.md",
+        "requirements/rad/non-functional/requirements.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "mockups",
+          "reference": "Mock-up Helper – Sessione attiva",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RF_GC_3": {
+      "source_row": 23,
+      "scenarios": [
+        "SC_GC_01",
+        "SC_GC_02"
+      ],
+      "use_cases": [
+        "UC_CS"
+      ],
+      "analysis_objects": [
+        "SessioneAscolto",
+        "Feedback",
+        "GestioneSessioneControl",
+        "ModuloFeedbackUI"
+      ],
+      "sequence_diagrams": [
+        "Non specificato"
+      ],
+      "statecharts": [
+        "SCD 1 – Ciclo di vita della richiesta di aiuto"
+      ],
+      "mockups": [
+        "Non specificato"
+      ],
+      "sdd_services": [
+        "Feedback e Segnalazioni – Raccolta del feedback"
+      ],
+      "related_rnfs": [
+        "RNF_L_1",
+        "RNF_L_4"
+      ],
+      "architecture_technology": [
+        "Three-Tier",
+        "React Native + TypeScript",
+        "Java Spring",
+        "API REST (HTTPS)",
+        "PostgreSQL"
+      ],
+      "rad_notes": "RAD Pag. 18",
+      "target_files": [
+        "requirements/rad/functional/RF_GC.md",
+        "requirements/rad/scenarios/SC_GC_01.md",
+        "requirements/rad/scenarios/SC_GC_02.md",
+        "requirements/rad/use-cases/UC_CS.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/statechart/SCD1.puml",
+        "architecture/sdd/subsystems/IFeedback.md",
+        "requirements/rad/non-functional/requirements.md"
+      ]
+    },
+    "RF_GC_4": {
+      "source_row": 24,
+      "scenarios": [
+        "SC_GC_02",
+        "SC_GSE_02"
+      ],
+      "use_cases": [
+        "UC_CS"
+      ],
+      "analysis_objects": [
+        "SessioneAscolto",
+        "GestioneSessioneControl",
+        "ModuloFeedbackUI"
+      ],
+      "sequence_diagrams": [
+        "Non specificato"
+      ],
+      "statecharts": [
+        "SCD 1 – Ciclo di vita della richiesta di aiuto"
+      ],
+      "mockups": [
+        "Mock-up Caller – Chiamata/chat",
+        "Helper – Sessione attiva"
+      ],
+      "sdd_services": [
+        "Comunicazione e Sessione – Chiusura della sessione"
+      ],
+      "related_rnfs": [
+        "RNF_A_3",
+        "RNF_A_4"
+      ],
+      "architecture_technology": [
+        "Presentation/Application/Data Tier",
+        "React Native + TypeScript",
+        "WebRTC",
+        "Java Spring",
+        "PostgreSQL"
+      ],
+      "rad_notes": "RAD Pag. 18",
+      "target_files": [
+        "requirements/rad/functional/RF_GC.md",
+        "requirements/rad/scenarios/SC_GC_02.md",
+        "requirements/rad/scenarios/SC_GSE_02.md",
+        "requirements/rad/use-cases/UC_CS.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/statechart/SCD1.puml",
+        "architecture/sdd/subsystems/IComunicazione.md",
+        "requirements/rad/non-functional/requirements.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "mockups",
+          "reference": "Mock-up Caller – Chiamata/chat",
+          "note": "Mock-up reference; not part of the extracted scope."
+        },
+        {
+          "field": "mockups",
+          "reference": "Helper – Sessione attiva",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RF_GC_5": {
+      "source_row": 25,
+      "scenarios": [
+        "SC_GC_01"
+      ],
+      "use_cases": [
+        "UC_CS"
+      ],
+      "analysis_objects": [
+        "Feedback",
+        "SessioneAscolto",
+        "GestioneSessioneControl",
+        "ProfiloUtente"
+      ],
+      "sequence_diagrams": [
+        "Non specificato"
+      ],
+      "statecharts": [
+        "Non specificato"
+      ],
+      "mockups": [
+        "Non specificato"
+      ],
+      "sdd_services": [
+        "Feedback e Segnalazioni – Segnalazioni di disconnessione",
+        "Gestione Notifiche – Invio delle notifiche"
+      ],
+      "related_rnfs": [
+        "RNF_L_4"
+      ],
+      "architecture_technology": [
+        "Application/Data Tier",
+        "Java Spring",
+        "PostgreSQL"
+      ],
+      "rad_notes": "RAD Pag. 18",
+      "target_files": [
+        "requirements/rad/functional/RF_GC.md",
+        "requirements/rad/scenarios/SC_GC_01.md",
+        "requirements/rad/use-cases/UC_CS.md",
+        "requirements/rad/object-model.md",
+        "architecture/sdd/subsystems/IFeedback.md",
+        "architecture/sdd/subsystems/INotifiche.md",
+        "requirements/rad/non-functional/requirements.md"
+      ]
+    },
+    "RF_SE_1": {
+      "source_row": 26,
+      "scenarios": [
+        "SC_GSE_01",
+        "SC_GSE_02"
+      ],
+      "use_cases": [
+        "UC_GSE"
+      ],
+      "analysis_objects": [
+        "ProceduraEscalation",
+        "GestioneEscalationControl",
+        "TriggerSafeEscalation",
+        "GestioneEmergenzaUI"
+      ],
+      "sequence_diagrams": [
+        "SD 3 – Safe Escalation"
+      ],
+      "statecharts": [
+        "SCD 2 – Ciclo di vita della procedura di Safe Escalation"
+      ],
+      "mockups": [
+        "Mock-up Helper – Sessione attiva"
+      ],
+      "sdd_services": [
+        "Safe Escalation – Attivazione della Safe Escalation",
+        "Safe Escalation – Stato della richiesta Safe Escalation"
+      ],
+      "related_rnfs": [
+        "RNF_U_2",
+        "RNF_A_1",
+        "RNF_A_3"
+      ],
+      "architecture_technology": [
+        "Three-Tier",
+        "React Native + TypeScript",
+        "Java Spring",
+        "API REST (HTTPS)",
+        "WebRTC",
+        "PostgreSQL"
+      ],
+      "rad_notes": "RAD Pag. 21",
+      "target_files": [
+        "requirements/rad/functional/RF_SE.md",
+        "requirements/rad/scenarios/SC_GSE_01.md",
+        "requirements/rad/scenarios/SC_GSE_02.md",
+        "requirements/rad/use-cases/UC_GSE.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/sequence/SD3.puml",
+        "requirements/rad/diagrams/statechart/SCD2.puml",
+        "architecture/sdd/subsystems/ISafeEscalation.md",
+        "requirements/rad/non-functional/requirements.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "analysis_objects",
+          "reference": "ProceduraEscalation",
+          "note": "Name not present verbatim in the extracted RAD Object Model; do not silently alias."
+        },
+        {
+          "field": "analysis_objects",
+          "reference": "GestioneEscalationControl",
+          "note": "Name not present verbatim in the extracted RAD Object Model; do not silently alias."
+        },
+        {
+          "field": "mockups",
+          "reference": "Mock-up Helper – Sessione attiva",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RF_SE_2": {
+      "source_row": 27,
+      "scenarios": [
+        "SC_GSE_01"
+      ],
+      "use_cases": [
+        "UC_GSE"
+      ],
+      "analysis_objects": [
+        "GestioneEscalationControl",
+        "TrasferimentoDatiControl",
+        "GestioneEmergenzaUI"
+      ],
+      "sequence_diagrams": [
+        "SD 3 – Safe Escalation"
+      ],
+      "statecharts": [
+        "SCD 2 – Ciclo di vita della procedura di Safe Escalation"
+      ],
+      "mockups": [
+        "Mock-up Supervisor – Procedura Safe Escalation"
+      ],
+      "sdd_services": [
+        "Safe Escalation – Passaggio ai servizi di emergenza"
+      ],
+      "related_rnfs": [
+        "RNF_P_1",
+        "RNF_IN_3",
+        "RNF_O_1",
+        "RNF_I_1",
+        "RNF_A_3"
+      ],
+      "architecture_technology": [
+        "Three-Tier",
+        "React Native + TypeScript",
+        "Java Spring",
+        "API REST (HTTPS)",
+        "PostgreSQL",
+        "servizi di emergenza simulati (IServiziEsterni)"
+      ],
+      "rad_notes": "RAD Pag. 21",
+      "target_files": [
+        "requirements/rad/functional/RF_SE.md",
+        "requirements/rad/scenarios/SC_GSE_01.md",
+        "requirements/rad/use-cases/UC_GSE.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/sequence/SD3.puml",
+        "requirements/rad/diagrams/statechart/SCD2.puml",
+        "architecture/sdd/subsystems/ISafeEscalation.md",
+        "requirements/rad/non-functional/requirements.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "analysis_objects",
+          "reference": "GestioneEscalationControl",
+          "note": "Name not present verbatim in the extracted RAD Object Model; do not silently alias."
+        },
+        {
+          "field": "mockups",
+          "reference": "Mock-up Supervisor – Procedura Safe Escalation",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RF_SE_3": {
+      "source_row": 28,
+      "scenarios": [
+        "SC_GSE_01"
+      ],
+      "use_cases": [
+        "UC_GSE"
+      ],
+      "analysis_objects": [
+        "TrasferimentoDatiControl",
+        "GestioneEmergenzaUI",
+        "GestioneEscalationControl"
+      ],
+      "sequence_diagrams": [
+        "SD 3 – Safe Escalation"
+      ],
+      "statecharts": [
+        "Non specificato"
+      ],
+      "mockups": [
+        "Mock-up Supervisor – Procedura Safe Escalation"
+      ],
+      "sdd_services": [
+        "Safe Escalation – Condivisione dei dati",
+        "Profili e Sicurezza Account – Fornitura di dati minimi di profilo"
+      ],
+      "related_rnfs": [
+        "RNF_A_4",
+        "RNF_O_1",
+        "RNF_L_1",
+        "RNF_L_2",
+        "RNF_L_4",
+        "RNF_IN_3"
+      ],
+      "architecture_technology": [
+        "Application/Data Tier",
+        "Java Spring",
+        "PostgreSQL",
+        "servizi di emergenza simulati (IServiziEsterni)"
+      ],
+      "rad_notes": "RAD Pag. 21",
+      "target_files": [
+        "requirements/rad/functional/RF_SE.md",
+        "requirements/rad/scenarios/SC_GSE_01.md",
+        "requirements/rad/use-cases/UC_GSE.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/sequence/SD3.puml",
+        "architecture/sdd/subsystems/ISafeEscalation.md",
+        "architecture/sdd/subsystems/IProfili.md",
+        "requirements/rad/non-functional/requirements.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "analysis_objects",
+          "reference": "GestioneEscalationControl",
+          "note": "Name not present verbatim in the extracted RAD Object Model; do not silently alias."
+        },
+        {
+          "field": "mockups",
+          "reference": "Mock-up Supervisor – Procedura Safe Escalation",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RF_SE_4": {
+      "source_row": 29,
+      "scenarios": [
+        "SC_GSE_01",
+        "SC_GSE_02"
+      ],
+      "use_cases": [
+        "UC_GSE"
+      ],
+      "analysis_objects": [
+        "ProceduraEscalation",
+        "GestioneEscalationControl",
+        "GestioneEmergenzaUI"
+      ],
+      "sequence_diagrams": [
+        "SD 3 – Safe Escalation"
+      ],
+      "statecharts": [
+        "SCD 2 – Ciclo di vita della procedura di Safe Escalation"
+      ],
+      "mockups": [
+        "Mock-up Supervisor – Dashboard Supervisor"
+      ],
+      "sdd_services": [
+        "Safe Escalation – Assegnazione del Supervisor",
+        "Gestione Notifiche – Invio delle notifiche"
+      ],
+      "related_rnfs": [
+        "RNF_A_1",
+        "RNF_L_2",
+        "RNF_A_3"
+      ],
+      "architecture_technology": [
+        "Application/Data Tier",
+        "Java Spring",
+        "PostgreSQL"
+      ],
+      "rad_notes": "RAD Pag. 21",
+      "target_files": [
+        "requirements/rad/functional/RF_SE.md",
+        "requirements/rad/scenarios/SC_GSE_01.md",
+        "requirements/rad/scenarios/SC_GSE_02.md",
+        "requirements/rad/use-cases/UC_GSE.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/sequence/SD3.puml",
+        "requirements/rad/diagrams/statechart/SCD2.puml",
+        "architecture/sdd/subsystems/ISafeEscalation.md",
+        "architecture/sdd/subsystems/INotifiche.md",
+        "requirements/rad/non-functional/requirements.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "analysis_objects",
+          "reference": "ProceduraEscalation",
+          "note": "Name not present verbatim in the extracted RAD Object Model; do not silently alias."
+        },
+        {
+          "field": "analysis_objects",
+          "reference": "GestioneEscalationControl",
+          "note": "Name not present verbatim in the extracted RAD Object Model; do not silently alias."
+        },
+        {
+          "field": "mockups",
+          "reference": "Mock-up Supervisor – Dashboard Supervisor",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RF_SE_5": {
+      "source_row": 30,
+      "scenarios": [
+        "Non specificato"
+      ],
+      "use_cases": [
+        "UC_GSE"
+      ],
+      "analysis_objects": [
+        "GestioneEscalationControl",
+        "TrasferimentoDatiControl",
+        "TriggerSafeEscalation"
+      ],
+      "sequence_diagrams": [
+        "SD 3 – Safe Escalation"
+      ],
+      "statecharts": [
+        "SCD 2 – Ciclo di vita della procedura di Safe Escalation"
+      ],
+      "mockups": [
+        "Non specificato"
+      ],
+      "sdd_services": [
+        "Gestione Fallback Escalation – Gestione del Fallback",
+        "Gestione Notifiche – Invio delle notifiche"
+      ],
+      "related_rnfs": [
+        "RNF_IN_3",
+        "RNF_O_1",
+        "RNF_A_3",
+        "RNF_P_1",
+        "RNF_I_1"
+      ],
+      "architecture_technology": [
+        "Three-Tier",
+        "React Native + TypeScript",
+        "Java Spring",
+        "PostgreSQL",
+        "WebRTC",
+        "servizi di emergenza simulati"
+      ],
+      "rad_notes": "RAD Pag. 22",
+      "target_files": [
+        "requirements/rad/functional/RF_SE.md",
+        "requirements/rad/use-cases/UC_GSE.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/sequence/SD3.puml",
+        "requirements/rad/diagrams/statechart/SCD2.puml",
+        "architecture/sdd/subsystems/IFallBack.md",
+        "architecture/sdd/subsystems/INotifiche.md",
+        "requirements/rad/non-functional/requirements.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "analysis_objects",
+          "reference": "GestioneEscalationControl",
+          "note": "Name not present verbatim in the extracted RAD Object Model; do not silently alias."
+        }
+      ]
+    },
+    "RF_SE_6": {
+      "source_row": 31,
+      "scenarios": [
+        "Non specificato"
+      ],
+      "use_cases": [
+        "UC_GSE"
+      ],
+      "analysis_objects": [
+        "Rendicontazione",
+        "LogAudit",
+        "ModuloRendicontazioneControl",
+        "ModuloRendicontazioneUI",
+        "GestioneEscalationControl"
+      ],
+      "sequence_diagrams": [
+        "SD 3 – Safe Escalation"
+      ],
+      "statecharts": [
+        "SCD 2 – Ciclo di vita della procedura di Safe Escalation"
+      ],
+      "mockups": [
+        "Mock-up Supervisor – Dashboard Supervisor",
+        "Revisione modulo di rendicontazione"
+      ],
+      "sdd_services": [
+        "Gestione Fallback Escalation – Rendicontazione del Fallback"
+      ],
+      "related_rnfs": [
+        "RNF_O_1"
+      ],
+      "architecture_technology": [
+        "Three-Tier",
+        "React Native + TypeScript",
+        "Java Spring",
+        "API REST (HTTPS)",
+        "PostgreSQL"
+      ],
+      "rad_notes": "RAD Pag. 22",
+      "target_files": [
+        "requirements/rad/functional/RF_SE.md",
+        "requirements/rad/use-cases/UC_GSE.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/sequence/SD3.puml",
+        "requirements/rad/diagrams/statechart/SCD2.puml",
+        "architecture/sdd/subsystems/IFallBack.md",
+        "requirements/rad/non-functional/requirements.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "analysis_objects",
+          "reference": "ModuloRendicontazioneUI",
+          "note": "Name not present verbatim in the extracted RAD Object Model; do not silently alias."
+        },
+        {
+          "field": "analysis_objects",
+          "reference": "GestioneEscalationControl",
+          "note": "Name not present verbatim in the extracted RAD Object Model; do not silently alias."
+        },
+        {
+          "field": "mockups",
+          "reference": "Mock-up Supervisor – Dashboard Supervisor",
+          "note": "Mock-up reference; not part of the extracted scope."
+        },
+        {
+          "field": "mockups",
+          "reference": "Revisione modulo di rendicontazione",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    }
+  },
+  "non_functional": {
+    "RNF_U_1": {
+      "source_row": 2,
+      "analysis_references": [
+        "Non specificato"
+      ],
+      "sdd_subsystems": [
+        "Non specificato"
+      ],
+      "architecture_technology": [
+        "N/D"
+      ],
+      "design_goals": [
+        "Nessuno"
+      ],
+      "rad_notes": "RAD Pag. 23",
+      "target_files": [
+        "requirements/rad/non-functional/requirements.md"
+      ]
+    },
+    "RNF_U_2": {
+      "source_row": 3,
+      "analysis_references": [
+        "RF_SE_1",
+        "SC_GSE_01",
+        "SC_GSE_02",
+        "UC_GSE",
+        "TriggerSafeEscalation",
+        "SD 3 – Safe Escalation",
+        "SCD 2 – Safe Escalation",
+        "Mock-up Helper – Sessione attiva"
+      ],
+      "sdd_subsystems": [
+        "Safe Escalation - EscalationService"
+      ],
+      "architecture_technology": [
+        "Presentation Tier",
+        "React Native + TypeScript (UI sessione Helper)"
+      ],
+      "design_goals": [
+        "DG_4"
+      ],
+      "rad_notes": "RAD Pag. 23",
+      "target_files": [
+        "requirements/rad/non-functional/requirements.md",
+        "requirements/rad/functional/RF_SE.md",
+        "requirements/rad/scenarios/SC_GSE_01.md",
+        "requirements/rad/scenarios/SC_GSE_02.md",
+        "requirements/rad/use-cases/UC_GSE.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/sequence/SD3.puml",
+        "requirements/rad/diagrams/statechart/SCD2.puml",
+        "architecture/sdd/subsystems/ISafeEscalation.md",
+        "architecture/sdd/diagrams/architecture.puml",
+        "architecture/sdd/design-goals.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "analysis_references",
+          "reference": "Mock-up Helper – Sessione attiva",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RNF_U_3": {
+      "source_row": 4,
+      "analysis_references": [
+        "RF_GAI_1",
+        "RF_GAI_3",
+        "RF_GAI_4",
+        "SC_GAI_01",
+        "SC_GAI_02",
+        "UC_GAI",
+        "AreaPersonaleUI",
+        "HelperDashboard",
+        "SD 2 – Richiesta di ascolto e matching",
+        "Mock-up Caller – Dashboard",
+        "Helper – Dashboard",
+        "RichiestaAscoltoUI (SD 2)"
+      ],
+      "sdd_subsystems": [
+        "Richieste di Ascolto – RichiesteService",
+        "Matching e presa in carico – MatchingService"
+      ],
+      "architecture_technology": [
+        "Presentation Tier",
+        "React Native + TypeScript (architettura navigazione UI)"
+      ],
+      "design_goals": [
+        "DG_4"
+      ],
+      "rad_notes": "RAD Pag. 23",
+      "target_files": [
+        "requirements/rad/non-functional/requirements.md",
+        "requirements/rad/functional/RF_GAI.md",
+        "requirements/rad/scenarios/SC_GAI_01.md",
+        "requirements/rad/scenarios/SC_GAI_02.md",
+        "requirements/rad/use-cases/UC_GAI.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/sequence/SD2.puml",
+        "architecture/sdd/subsystems/IRichieste.md",
+        "architecture/sdd/diagrams/architecture.puml",
+        "architecture/sdd/subsystems/IMatching.md",
+        "architecture/sdd/design-goals.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "analysis_references",
+          "reference": "Mock-up Caller – Dashboard",
+          "note": "Mock-up reference; not part of the extracted scope."
+        },
+        {
+          "field": "analysis_references",
+          "reference": "Helper – Dashboard",
+          "note": "Mock-up reference; not part of the extracted scope."
+        },
+        {
+          "field": "analysis_references",
+          "reference": "RichiestaAscoltoUI (SD 2)",
+          "note": "Named object not present under this exact name in the RAD Object Model; SD2 is explicitly cited."
+        }
+      ]
+    },
+    "RNF_U_4": {
+      "source_row": 5,
+      "analysis_references": [
+        "Tutti i mock-up UI (vincolo trasversale)"
+      ],
+      "sdd_subsystems": [
+        "Non specificato"
+      ],
+      "architecture_technology": [
+        "Presentation Tier",
+        "React Native + TypeScript",
+        "React Native Web (Chrome/Firefox)"
+      ],
+      "design_goals": [
+        "DG_6"
+      ],
+      "rad_notes": "RAD Pag. 23",
+      "target_files": [
+        "requirements/rad/non-functional/requirements.md",
+        "architecture/sdd/design-goals.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "analysis_references",
+          "reference": "Tutti i mock-up UI (vincolo trasversale)",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RNF_A_1": {
+      "source_row": 6,
+      "analysis_references": [
+        "RF_SE_1",
+        "RF_SE_4",
+        "SC_GSE_01",
+        "SC_GSE_02",
+        "UC_GSE",
+        "GestioneEscalationControl",
+        "GestioneEmergenzaUI",
+        "SD 3",
+        "SCD 2",
+        "Mock-up Supervisor – Dashboard/Procedura Safe Escalation"
+      ],
+      "sdd_subsystems": [
+        "Safe Escalation – EscalationService",
+        "Gestione Notifiche – NotificheService"
+      ],
+      "architecture_technology": [
+        "Application/Data Tier",
+        "Java Spring",
+        "PostgreSQL"
+      ],
+      "design_goals": [
+        "DG_1"
+      ],
+      "rad_notes": "RAD Pag. 23",
+      "target_files": [
+        "requirements/rad/non-functional/requirements.md",
+        "requirements/rad/functional/RF_SE.md",
+        "requirements/rad/scenarios/SC_GSE_01.md",
+        "requirements/rad/scenarios/SC_GSE_02.md",
+        "requirements/rad/use-cases/UC_GSE.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/sequence/SD3.puml",
+        "requirements/rad/diagrams/statechart/SCD2.puml",
+        "architecture/sdd/subsystems/ISafeEscalation.md",
+        "architecture/sdd/diagrams/architecture.puml",
+        "architecture/sdd/subsystems/INotifiche.md",
+        "architecture/sdd/design-goals.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "analysis_references",
+          "reference": "GestioneEscalationControl",
+          "note": "Name not present verbatim in the extracted RAD Object Model; do not silently alias."
+        },
+        {
+          "field": "analysis_references",
+          "reference": "Mock-up Supervisor – Dashboard/Procedura Safe Escalation",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RNF_A_2": {
+      "source_row": 7,
+      "analysis_references": [
+        "RF_GC_1",
+        "RF_GC_2",
+        "SC_GC_01",
+        "UC_CS",
+        "SessioneAscolto",
+        "GestioneSessioneControl",
+        "Helper – Sessione attiva"
+      ],
+      "sdd_subsystems": [
+        "Comunicazione e Sessione – Ripristino della sessione"
+      ],
+      "architecture_technology": [
+        "Presentation Tier",
+        "React Native + TypeScript",
+        "WebRTC",
+        "memoria volatile dei dispositivi"
+      ],
+      "design_goals": [
+        "DG_7"
+      ],
+      "rad_notes": "RAD Pag. 23",
+      "target_files": [
+        "requirements/rad/non-functional/requirements.md",
+        "requirements/rad/functional/RF_GC.md",
+        "requirements/rad/scenarios/SC_GC_01.md",
+        "requirements/rad/use-cases/UC_CS.md",
+        "requirements/rad/object-model.md",
+        "architecture/sdd/subsystems/IComunicazione.md",
+        "architecture/sdd/design-goals.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "analysis_references",
+          "reference": "Helper – Sessione attiva",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RNF_A_3": {
+      "source_row": 8,
+      "analysis_references": [
+        "RF_GC_1",
+        "RF_GC_2",
+        "RF_GC_4",
+        "RF_SE_1",
+        "RF_SE_2",
+        "RF_SE_4",
+        "RF_SE_5",
+        "SC_GSE_01",
+        "SC_GSE_02",
+        "UC_GSE",
+        "SessioneAscolto",
+        "GestioneEscalationControl",
+        "SD 3",
+        "SCD 2",
+        "Mock-up Helper – Sessione attiva"
+      ],
+      "sdd_subsystems": [
+        "Comunicazione e Sessione",
+        "Safe Escalation – EscalationService",
+        "Gestione Fallback Escalation – Gestione del Fallback"
+      ],
+      "architecture_technology": [
+        "Presentation/Application Tier",
+        "WebRTC",
+        "Java Spring"
+      ],
+      "design_goals": [
+        "DG_1"
+      ],
+      "rad_notes": "RAD Pag. 23",
+      "target_files": [
+        "requirements/rad/non-functional/requirements.md",
+        "requirements/rad/functional/RF_GC.md",
+        "requirements/rad/functional/RF_SE.md",
+        "requirements/rad/scenarios/SC_GSE_01.md",
+        "requirements/rad/scenarios/SC_GSE_02.md",
+        "requirements/rad/use-cases/UC_GSE.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/sequence/SD3.puml",
+        "requirements/rad/diagrams/statechart/SCD2.puml",
+        "architecture/sdd/subsystems/IComunicazione.md",
+        "architecture/sdd/subsystems/ISafeEscalation.md",
+        "architecture/sdd/diagrams/architecture.puml",
+        "architecture/sdd/subsystems/IFallBack.md",
+        "architecture/sdd/design-goals.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "analysis_references",
+          "reference": "GestioneEscalationControl",
+          "note": "Name not present verbatim in the extracted RAD Object Model; do not silently alias."
+        },
+        {
+          "field": "analysis_references",
+          "reference": "Mock-up Helper – Sessione attiva",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RNF_A_4": {
+      "source_row": 9,
+      "analysis_references": [
+        "RF_GC_1",
+        "RF_GC_2",
+        "RF_GC_4",
+        "RF_SE_3",
+        "SC_GC_01",
+        "SC_GSE_01",
+        "UC_CS",
+        "UC_GSE",
+        "SessioneAscolto",
+        "LogAudit",
+        "SD 3",
+        "Mock-up Caller – Chiamata/chat"
+      ],
+      "sdd_subsystems": [
+        "Comunicazione e Sessione",
+        "Safe Escalation"
+      ],
+      "architecture_technology": [
+        "Data Tier",
+        "PostgreSQL",
+        "WebRTC"
+      ],
+      "design_goals": [
+        "DG_2",
+        "DG_7"
+      ],
+      "rad_notes": "RAD Pag. 23",
+      "target_files": [
+        "requirements/rad/non-functional/requirements.md",
+        "requirements/rad/functional/RF_GC.md",
+        "requirements/rad/functional/RF_SE.md",
+        "requirements/rad/scenarios/SC_GC_01.md",
+        "requirements/rad/scenarios/SC_GSE_01.md",
+        "requirements/rad/use-cases/UC_CS.md",
+        "requirements/rad/use-cases/UC_GSE.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/sequence/SD3.puml",
+        "architecture/sdd/subsystems/IComunicazione.md",
+        "architecture/sdd/subsystems/ISafeEscalation.md",
+        "architecture/sdd/design-goals.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "analysis_references",
+          "reference": "Mock-up Caller – Chiamata/chat",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RNF_P_1": {
+      "source_row": 10,
+      "analysis_references": [
+        "RF_GA_1",
+        "RF_GA_3",
+        "RF_GA_4",
+        "RF_GA_6",
+        "RF_GU_1",
+        "RF_SE_2",
+        "RF_SE_5",
+        "UC_AO",
+        "UC_ACM",
+        "UC_GSE",
+        "InterfacciaAutenticazione",
+        "EntePartnerUI",
+        "TrasferimentoDatiControl"
+      ],
+      "sdd_subsystems": [
+        "AccessoService",
+        "HelperService",
+        "EscalationService",
+        "FallbackService"
+      ],
+      "architecture_technology": [
+        "Application Tier",
+        "Java Spring"
+      ],
+      "design_goals": [
+        "Nessuno"
+      ],
+      "rad_notes": "RAD Pag. 24",
+      "target_files": [
+        "requirements/rad/non-functional/requirements.md",
+        "requirements/rad/functional/RF_GA.md",
+        "requirements/rad/functional/RF_GU.md",
+        "requirements/rad/functional/RF_SE.md",
+        "requirements/rad/use-cases/UC_AO.md",
+        "requirements/rad/use-cases/UC_ACM.md",
+        "requirements/rad/use-cases/UC_GSE.md",
+        "requirements/rad/object-model.md",
+        "architecture/sdd/subsystems/IAccess.md",
+        "architecture/sdd/diagrams/architecture.puml",
+        "architecture/sdd/subsystems/IHelper.md",
+        "architecture/sdd/subsystems/ISafeEscalation.md",
+        "architecture/sdd/subsystems/IFallBack.md"
+      ]
+    },
+    "RNF_P_2": {
+      "source_row": 11,
+      "analysis_references": [
+        "SessioneAscolto",
+        "ChatTestualeUI",
+        "ChiamataAudioUI"
+      ],
+      "sdd_subsystems": [
+        "Comunicazione e Sessione"
+      ],
+      "architecture_technology": [
+        "Presentation/Application Tier",
+        "WebRTC",
+        "Java Spring"
+      ],
+      "design_goals": [
+        "Nessuno"
+      ],
+      "rad_notes": "RAD Pag. 24",
+      "target_files": [
+        "requirements/rad/non-functional/requirements.md",
+        "requirements/rad/object-model.md",
+        "architecture/sdd/subsystems/IComunicazione.md"
+      ]
+    },
+    "RNF_S_1": {
+      "source_row": 12,
+      "analysis_references": [
+        "RF_GA_7",
+        "AccountUtente",
+        "AccessoUtente",
+        "InterfacciaPiattaforma"
+      ],
+      "sdd_subsystems": [
+        "Profili e Sicurezza Account – Eliminazione dell'account – ProfiliService"
+      ],
+      "architecture_technology": [
+        "Data/Application Tier",
+        "PostgreSQL",
+        "Java Spring"
+      ],
+      "design_goals": [
+        "Nessuno"
+      ],
+      "rad_notes": "RAD Pag. 24",
+      "target_files": [
+        "requirements/rad/non-functional/requirements.md",
+        "requirements/rad/functional/RF_GA.md",
+        "requirements/rad/object-model.md",
+        "architecture/sdd/subsystems/IProfili.md",
+        "architecture/sdd/diagrams/architecture.puml"
+      ]
+    },
+    "RNF_I_1": {
+      "source_row": 13,
+      "analysis_references": [
+        "RF_GA_1",
+        "RF_GA_3",
+        "RF_GA_4",
+        "RF_GA_6",
+        "RF_GU_1",
+        "RF_SE_2",
+        "RF_SE_5",
+        "UC_AO",
+        "UC_ACM",
+        "UC_GSE",
+        "InterfacciaAutenticazione",
+        "EntePartnerUI",
+        "TrasferimentoDatiControl"
+      ],
+      "sdd_subsystems": [
+        "AccessoService",
+        "HelperService",
+        "EscalationService",
+        "FallbackService"
+      ],
+      "architecture_technology": [
+        "Application Tier",
+        "Java Spring",
+        "mock sostituibili (IAuth, IEntiPartner, IServiziEsterni, IGeolocalizzazione)"
+      ],
+      "design_goals": [
+        "DG_5"
+      ],
+      "rad_notes": "RAD Pag. 24",
+      "target_files": [
+        "requirements/rad/non-functional/requirements.md",
+        "requirements/rad/functional/RF_GA.md",
+        "requirements/rad/functional/RF_GU.md",
+        "requirements/rad/functional/RF_SE.md",
+        "requirements/rad/use-cases/UC_AO.md",
+        "requirements/rad/use-cases/UC_ACM.md",
+        "requirements/rad/use-cases/UC_GSE.md",
+        "requirements/rad/object-model.md",
+        "architecture/sdd/subsystems/IAccess.md",
+        "architecture/sdd/diagrams/architecture.puml",
+        "architecture/sdd/subsystems/IHelper.md",
+        "architecture/sdd/subsystems/ISafeEscalation.md",
+        "architecture/sdd/subsystems/IFallBack.md",
+        "architecture/sdd/design-goals.md"
+      ]
+    },
+    "RNF_I_2": {
+      "source_row": 14,
+      "analysis_references": [
+        "RF_GC_2",
+        "SC_GC_01",
+        "SC_GC_02",
+        "SessioneAscolto",
+        "ChiamataAudioUI",
+        "Mock-up Helper – Sessione attiva"
+      ],
+      "sdd_subsystems": [
+        "Comunicazione e Sessione – Chiamata audio"
+      ],
+      "architecture_technology": [
+        "Presentation Tier",
+        "WebRTC"
+      ],
+      "design_goals": [
+        "Nessuno"
+      ],
+      "rad_notes": "RAD Pag. 24",
+      "target_files": [
+        "requirements/rad/non-functional/requirements.md",
+        "requirements/rad/functional/RF_GC.md",
+        "requirements/rad/scenarios/SC_GC_01.md",
+        "requirements/rad/scenarios/SC_GC_02.md",
+        "requirements/rad/object-model.md",
+        "architecture/sdd/subsystems/IComunicazione.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "analysis_references",
+          "reference": "Mock-up Helper – Sessione attiva",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RNF_I_3": {
+      "source_row": 15,
+      "analysis_references": [
+        "Interfacce UI e controlli del modello ad oggetti (trasversale)"
+      ],
+      "sdd_subsystems": [
+        "Non specificato"
+      ],
+      "architecture_technology": [
+        "Presentation/Application Tier",
+        "API REST su protocollo HTTPS"
+      ],
+      "design_goals": [
+        "Nessuno"
+      ],
+      "rad_notes": "RAD Pag. 24",
+      "target_files": [
+        "requirements/rad/non-functional/requirements.md",
+        "requirements/rad/object-model.md"
+      ]
+    },
+    "RNF_IN_1": {
+      "source_row": 16,
+      "analysis_references": [
+        "RF_GA_1",
+        "RF_GA_3",
+        "RF_GA_4",
+        "RF_GA_6",
+        "UC_AO",
+        "UC_ACM",
+        "InterfacciaAutenticazione"
+      ],
+      "sdd_subsystems": [
+        "Accesso e tutela minori – AccessoService"
+      ],
+      "architecture_technology": [
+        "Application Tier",
+        "Java Spring",
+        "IAuth"
+      ],
+      "design_goals": [
+        "DG_5"
+      ],
+      "rad_notes": "RAD Pag. 25",
+      "target_files": [
+        "requirements/rad/non-functional/requirements.md",
+        "requirements/rad/functional/RF_GA.md",
+        "requirements/rad/use-cases/UC_AO.md",
+        "requirements/rad/use-cases/UC_ACM.md",
+        "requirements/rad/object-model.md",
+        "architecture/sdd/subsystems/IAccess.md",
+        "architecture/sdd/diagrams/architecture.puml",
+        "architecture/sdd/design-goals.md"
+      ]
+    },
+    "RNF_IN_2": {
+      "source_row": 17,
+      "analysis_references": [
+        "RF_GU_1",
+        "SC_GU_01",
+        "UC_GU",
+        "ProfiloUtente",
+        "Abilitazione",
+        "GestioneAbilitazioniControl",
+        "GestioneHelperUI",
+        "EntePartnerUI",
+        "Mock-up Supervisor – Area di Gestione Account Helper"
+      ],
+      "sdd_subsystems": [
+        "Helper e Abilitazione – HelperService"
+      ],
+      "architecture_technology": [
+        "Application Tier",
+        "Java Spring",
+        "IEntiPartner"
+      ],
+      "design_goals": [
+        "DG_5"
+      ],
+      "rad_notes": "RAD Pag. 25",
+      "target_files": [
+        "requirements/rad/non-functional/requirements.md",
+        "requirements/rad/functional/RF_GU.md",
+        "requirements/rad/scenarios/SC_GU_01.md",
+        "requirements/rad/use-cases/UC_GU.md",
+        "requirements/rad/object-model.md",
+        "architecture/sdd/subsystems/IHelper.md",
+        "architecture/sdd/diagrams/architecture.puml",
+        "architecture/sdd/design-goals.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "analysis_references",
+          "reference": "Mock-up Supervisor – Area di Gestione Account Helper",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RNF_IN_3": {
+      "source_row": 18,
+      "analysis_references": [
+        "RF_SE_2",
+        "RF_SE_3",
+        "RF_SE_5",
+        "SC_GSE_01",
+        "UC_GSE",
+        "TrasferimentoDatiControl",
+        "SD 3",
+        "SCD 2",
+        "Mock-up Supervisor – Procedura Safe Escalation"
+      ],
+      "sdd_subsystems": [
+        "Safe Escalation – EscalationService",
+        "Gestione Fallback Escalation – FallbackService"
+      ],
+      "architecture_technology": [
+        "Application Tier",
+        "Java Spring",
+        "IServiziEsterni"
+      ],
+      "design_goals": [
+        "DG_5"
+      ],
+      "rad_notes": "RAD Pag. 25",
+      "target_files": [
+        "requirements/rad/non-functional/requirements.md",
+        "requirements/rad/functional/RF_SE.md",
+        "requirements/rad/scenarios/SC_GSE_01.md",
+        "requirements/rad/use-cases/UC_GSE.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/sequence/SD3.puml",
+        "requirements/rad/diagrams/statechart/SCD2.puml",
+        "architecture/sdd/subsystems/ISafeEscalation.md",
+        "architecture/sdd/diagrams/architecture.puml",
+        "architecture/sdd/subsystems/IFallBack.md",
+        "architecture/sdd/design-goals.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "analysis_references",
+          "reference": "Mock-up Supervisor – Procedura Safe Escalation",
+          "note": "Mock-up reference; not part of the extracted scope."
+        }
+      ]
+    },
+    "RNF_O_1": {
+      "source_row": 19,
+      "analysis_references": [
+        "RF_SE_2",
+        "RF_SE_3",
+        "RF_SE_5",
+        "RF_SE_6",
+        "SC_GSE_01",
+        "SC_GSE_02",
+        "UC_GSE",
+        "LogAudit",
+        "GestioneEscalationControl",
+        "SD 3"
+      ],
+      "sdd_subsystems": [
+        "Safe Escalation – Registrazione di log audit – EscalationService"
+      ],
+      "architecture_technology": [
+        "Application/Data Tier",
+        "Java Spring",
+        "PostgreSQL (LogAudit)"
+      ],
+      "design_goals": [
+        "DG_3"
+      ],
+      "rad_notes": "RAD Pag. 25",
+      "target_files": [
+        "requirements/rad/non-functional/requirements.md",
+        "requirements/rad/functional/RF_SE.md",
+        "requirements/rad/scenarios/SC_GSE_01.md",
+        "requirements/rad/scenarios/SC_GSE_02.md",
+        "requirements/rad/use-cases/UC_GSE.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/sequence/SD3.puml",
+        "architecture/sdd/subsystems/ISafeEscalation.md",
+        "architecture/sdd/diagrams/architecture.puml",
+        "architecture/sdd/design-goals.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "analysis_references",
+          "reference": "GestioneEscalationControl",
+          "note": "Name not present verbatim in the extracted RAD Object Model; do not silently alias."
+        }
+      ]
+    },
+    "RNF_PA_1": {
+      "source_row": 20,
+      "analysis_references": [
+        "Non specificato"
+      ],
+      "sdd_subsystems": [
+        "Non specificato"
+      ],
+      "architecture_technology": [
+        "N/D"
+      ],
+      "design_goals": [
+        "DG_8"
+      ],
+      "rad_notes": "RAD Pag. 25",
+      "target_files": [
+        "requirements/rad/non-functional/requirements.md",
+        "architecture/sdd/design-goals.md"
+      ]
+    },
+    "RNF_L_1": {
+      "source_row": 21,
+      "analysis_references": [
+        "RF_GA_7",
+        "RF_GC_3",
+        "RF_SE_3",
+        "AccountUtente",
+        "Feedback",
+        "LogAudit",
+        "UC_GSE"
+      ],
+      "sdd_subsystems": [
+        "Profili e Sicurezza Account – ProfiliService",
+        "FeedbackService",
+        "EscalationService"
+      ],
+      "architecture_technology": [
+        "Data/Application Tier",
+        "PostgreSQL",
+        "Java Spring"
+      ],
+      "design_goals": [
+        "Nessuno"
+      ],
+      "rad_notes": "RAD Pag. 25",
+      "target_files": [
+        "requirements/rad/non-functional/requirements.md",
+        "requirements/rad/functional/RF_GA.md",
+        "requirements/rad/functional/RF_GC.md",
+        "requirements/rad/functional/RF_SE.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/use-cases/UC_GSE.md",
+        "architecture/sdd/subsystems/IProfili.md",
+        "architecture/sdd/diagrams/architecture.puml",
+        "architecture/sdd/subsystems/IFeedback.md",
+        "architecture/sdd/subsystems/ISafeEscalation.md"
+      ]
+    },
+    "RNF_L_2": {
+      "source_row": 22,
+      "analysis_references": [
+        "RF_SE_3",
+        "RF_SE_4",
+        "SC_GSE_01",
+        "UC_GSE",
+        "LogAudit",
+        "GestioneEscalationControl",
+        "SD 3"
+      ],
+      "sdd_subsystems": [
+        "Safe Escalation – Registrazione di log audit – EscalationService"
+      ],
+      "architecture_technology": [
+        "Application/Data Tier",
+        "Java Spring",
+        "PostgreSQL"
+      ],
+      "design_goals": [
+        "DG_3"
+      ],
+      "rad_notes": "RAD Pag. 25",
+      "target_files": [
+        "requirements/rad/non-functional/requirements.md",
+        "requirements/rad/functional/RF_SE.md",
+        "requirements/rad/scenarios/SC_GSE_01.md",
+        "requirements/rad/use-cases/UC_GSE.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/sequence/SD3.puml",
+        "architecture/sdd/subsystems/ISafeEscalation.md",
+        "architecture/sdd/diagrams/architecture.puml",
+        "architecture/sdd/design-goals.md"
+      ],
+      "unresolved_references": [
+        {
+          "field": "analysis_references",
+          "reference": "GestioneEscalationControl",
+          "note": "Name not present verbatim in the extracted RAD Object Model; do not silently alias."
+        }
+      ]
+    },
+    "RNF_L_3": {
+      "source_row": 23,
+      "analysis_references": [
+        "SC_GA_01",
+        "SC_GA_02",
+        "SC_GA_03",
+        "UC_AO",
+        "UC_ACM",
+        "QuestionarioForm",
+        "InterfacciaPiattaforma",
+        "SC_GA_04"
+      ],
+      "sdd_subsystems": [
+        "Accesso e tutela minori – AccessoService"
+      ],
+      "architecture_technology": [
+        "Presentation Tier",
+        "React Native + TypeScript"
+      ],
+      "design_goals": [
+        "Nessuno"
+      ],
+      "rad_notes": "RAD Pag. 25",
+      "target_files": [
+        "requirements/rad/non-functional/requirements.md",
+        "requirements/rad/scenarios/SC_GA_01.md",
+        "requirements/rad/scenarios/SC_GA_02.md",
+        "requirements/rad/scenarios/SC_GA_03.md",
+        "requirements/rad/use-cases/UC_AO.md",
+        "requirements/rad/use-cases/UC_ACM.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/scenarios/SC_GA_04.md",
+        "architecture/sdd/subsystems/IAccess.md",
+        "architecture/sdd/diagrams/architecture.puml"
+      ]
+    },
+    "RNF_L_4": {
+      "source_row": 24,
+      "analysis_references": [
+        "RF_GA_3",
+        "RF_GAI_1",
+        "RF_GAI_2",
+        "RF_GAI_3",
+        "RF_GC_1",
+        "RF_GC_2",
+        "RF_GC_3",
+        "RF_GC_5",
+        "RF_SE_3",
+        "UC_ACM",
+        "UC_GAI",
+        "UC_GSE",
+        "AccountUtente",
+        "SessioneAscolto",
+        "Feedback",
+        "LogAudit",
+        "SD 2",
+        "SD 3",
+        "SCD 1",
+        "SCD 2",
+        "SC_GAI_02"
+      ],
+      "sdd_subsystems": [
+        "Profili e Sicurezza Account",
+        "Comunicazione e Sessione",
+        "Feedback e Segnalazioni",
+        "Safe Escalation"
+      ],
+      "architecture_technology": [
+        "Application/Data Tier",
+        "Java Spring",
+        "WebRTC",
+        "PostgreSQL"
+      ],
+      "design_goals": [
+        "DG_2"
+      ],
+      "rad_notes": "RAD Pag. 25",
+      "target_files": [
+        "requirements/rad/non-functional/requirements.md",
+        "requirements/rad/functional/RF_GA.md",
+        "requirements/rad/functional/RF_GAI.md",
+        "requirements/rad/functional/RF_GC.md",
+        "requirements/rad/functional/RF_SE.md",
+        "requirements/rad/use-cases/UC_ACM.md",
+        "requirements/rad/use-cases/UC_GAI.md",
+        "requirements/rad/use-cases/UC_GSE.md",
+        "requirements/rad/object-model.md",
+        "requirements/rad/diagrams/sequence/SD2.puml",
+        "requirements/rad/diagrams/sequence/SD3.puml",
+        "requirements/rad/diagrams/statechart/SCD1.puml",
+        "requirements/rad/diagrams/statechart/SCD2.puml",
+        "requirements/rad/scenarios/SC_GAI_02.md",
+        "architecture/sdd/subsystems/IProfili.md",
+        "architecture/sdd/subsystems/IComunicazione.md",
+        "architecture/sdd/subsystems/IFeedback.md",
+        "architecture/sdd/subsystems/ISafeEscalation.md",
+        "architecture/sdd/design-goals.md"
+      ]
+    }
+  }
+}

@@ -1,27 +1,39 @@
-schema_version: 1
+schema_version: 3
 
 documents:
   RAD:
     title: Requirements Analysis Document
     source: C20_E.C.H.O._RAD.pdf
+    source_path: ../sources/C20_E.C.H.O._RAD.pdf
     version: "1.0.0"
     date: "2026-11-20"
     document_status: finalized
-    extraction_status: prepared
-    verification_status: partial
+    extraction_status: complete
+    verification_status: verified
     known_issues: requirements/rad/known-issues.md
     path: requirements/rad/
 
   SDD:
     title: System Design Document
-    document_status: in_progress
-    extraction_status: pending
+    source: C20_E.C.H.O._SDD.pdf
+    source_path: ../sources/C20_E.C.H.O._SDD.pdf
+    version: "1.0.0"
+    date: "2026-11-25"
+    document_status: finalized
+    extraction_status: complete
+    verification_status: verified
+    known_issues: architecture/sdd/known-issues.md
     path: architecture/sdd/
 
   MT:
     title: Traceability Matrix
-    document_status: in_progress
-    extraction_status: pending
+    source: C20_E.C.H.O._MT.xlsx
+    source_path: ../sources/C20_E.C.H.O._MT.xlsx
+    version: "1.0"
+    document_status: finalized
+    extraction_status: complete
+    verification_status: verified
+    known_issues: traceability/known-issues.md
     path: traceability/
 
   DPD:
@@ -41,3 +53,28 @@ documents:
     document_status: pending
     extraction_status: pending
     path: verification/tcs/
+
+engineering_standards:
+  TECH_STACK:
+    title: Technology Stack
+    version: "1.1.0"
+    date: "2026-11-26"
+    document_status: approved
+    validation_status: pending
+    path: engineering/tech-stack.md
+
+  CODING_CONVENTIONS:
+    title: Coding Conventions
+    version: "1.0.0"
+    date: "2026-11-26"
+    document_status: approved
+    validation_status: pending
+    path: engineering/coding-conventions.md
+
+  DESIGN_SYSTEM:
+    title: Design System
+    version: "1.0.0"
+    date: "2026-11-26"
+    document_status: approved
+    validation_status: pending
+    path: engineering/design-system.md

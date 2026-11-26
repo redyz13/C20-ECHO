@@ -1,35 +1,36 @@
 # E.C.H.O. — Technology Stack
 
-Status: selected technology baseline; integration and version validation pending.
+Status: approved. See the document register for version and technical validation status.
 Targets: responsive web application, Android, iOS.
-Authority: project-approved RAD, SoW, SDD and DPD when available. Report material conflicts; do not override specifications. Agents must not modify this document or other ground-truth artifacts.
+Authority: applicable approved project specifications. See [ground truth rules](../README.md).
 
 ## 1. Stack
 
 | Area | Technology |
 |---|---|
 | Client | React Native, Expo, React Native Web, TypeScript (strict), Expo Router |
+| UI components and icons | React Native Paper (MD3), Material Design Icons (filled; `@react-native-vector-icons/material-design-icons`) |
 | Server state | TanStack Query |
 | Client build | Node.js LTS, npm, Expo CLI |
 | Backend | Java 21 LTS, Spring Boot, Spring Web MVC, Spring Security, Jakarta Bean Validation |
 | Backend build | Apache Maven via Maven Wrapper |
 | Persistence | PostgreSQL, Spring Data JPA, Hibernate, Flyway |
 | API contracts | REST, JSON, OpenAPI |
-| Application events | Spring WebSocket |
-| Session transport | LiveKit, WebRTC (audio and session text transport) |
+| Application events | Spring WebSocket (application events and WebRTC signaling) |
+| Session transport | WebRTC peer-to-peer: browser WebRTC API, `react-native-webrtc` on Android/iOS; ICE/STUN/TURN |
 | Local infrastructure | Docker, Docker Compose |
 | CI/CD and native builds | GitHub Actions, Expo EAS Build |
 
-Use the selected stack. Do not introduce competing frameworks, package managers, ORMs, migration tools or infrastructure without an approved technology decision. Prefer existing dependencies and justify additions. UI library selection is pending `design-system.md` and SDD alignment.
+Use the selected stack. Do not introduce competing frameworks, package managers, ORMs, migration tools or infrastructure without an approved technology decision. Prefer existing dependencies and justify additions. Apply the approved [Design System](design-system.md) to the UI stack; verify SDD alignment and cross-platform compatibility.
 
 ## 2. Integration constraints
 
-- Share client code across targets where feasible. Isolate platform-specific integrations; use LiveKit web SDK on web and native SDK on Android/iOS. Use Expo development builds, not Expo Go, for native LiveKit integration.
-- Use REST for non-real-time operations; use WebSocket for application events and LiveKit for session communication. The backend owns domain logic, authorization and session access; issue scoped LiveKit credentials server-side.
+- Share client code across targets where feasible. Isolate platform-specific integrations; use browser WebRTC APIs on web and `react-native-webrtc` on Android/iOS behind a shared interface. Use compatible Expo development builds and native configuration plugins, not Expo Go.
+- Use REST for non-real-time operations and Spring WebSocket for application events and authenticated WebRTC signaling (SDP and ICE exchange). Use WebRTC audio tracks and data channels for session audio and text; use STUN/TURN for ICE connectivity as specified in [SDD deployment](../architecture/sdd/deployment.md). The backend owns domain logic, authorization and session access; restrict signaling to authorized session participants and issue scoped, short-lived TURN credentials server-side. Do not route session content through the application backend or introduce an SFU without an approved architectural change.
 - Use one versioned OpenAPI contract for REST; implement clients and server against it. Generate the TypeScript client from the contract with a pinned generator. Do not invent endpoints or edit generated clients manually. Event schemas and endpoint details belong to the architecture/API artifacts.
 - Keep simulated external integrations isolated behind replaceable interfaces; external waits must be asynchronous and non-blocking.
 - Preserve RAD constraints: `RNF_U_4`, `RNF_A_1`–`RNF_A_4`, `RNF_P_1`–`RNF_P_2`, `RNF_I_1`–`RNF_I_3`, `RNF_IN_1`–`RNF_IN_3`, `RNF_L_4`. See [RAD requirements](../requirements/rad/non-functional/requirements.md) and [known issues](../requirements/rad/known-issues.md).
-- No video calls or audio recording (SoW). Do not persist conversation content in databases, files, logs, telemetry, caches or client storage. Do not assume that LiveKit guarantees message recovery across disconnections. Resolve the recovery/retention constraint before implementing recovery mechanisms.
+- No video calls or audio recording (SoW). Do not persist conversation content in databases, files, logs, telemetry, caches or persistent client storage. SDD §§1.2.1 and 3.6 permit temporary content in client volatile memory only, deleted at session conclusion. Reliable data channels alone do not guarantee delivery across disconnections; validate recovery and retransmission without persistent storage. Validate peer network-address exposure against pseudonymity requirements; evaluate TURN-only ICE if necessary, with capacity and latency evidence.
 - Use environment-specific configuration, synthetic test data and secret injection. Never embed credentials in clients, `EXPO_PUBLIC_*` variables or repository files.
 
 ## 3. Reproducibility and dependencies
@@ -53,7 +54,7 @@ At bootstrap, select mutually compatible supported releases and commit the concr
 
 ## 5. CI integration contract
 
-The following are target checks, not existing workflows. Define scripts and plugins during bootstrap; keep local and CI entry points identical. Commands run from the corresponding application or infrastructure directory.
+Configure the following checks at bootstrap. Keep local and CI entry points identical. Commands run from the corresponding application or infrastructure directory.
 
 | Check | Target entry point |
 |---|---|
@@ -76,17 +77,18 @@ Run affected static, build, contract and test checks on PRs; include dependent c
 - Keep check commands and project-specific configuration reusable by CI and the existing agent roles. Do not require new agents for mechanical checks. Support the existing implementation and test repair paths without relaxing independent testing or audit.
 - Never weaken checks, alter protected specifications or skip failing tests to obtain a passing build. Workflow routing, permissions, retry limits, repair policy and deployment gates belong to the pipeline configuration; coding rules belong to `coding-conventions.md`.
 
-## 6. Pending validation
+## 6. Integration and validation requirements
 
-- Confirm consistency with the current SDD/DPD before implementation. No deployment topology, module layout or auth protocol is selected here.
-- Pin the compatible dependency and runtime versions during bootstrap. Select UI components after the team design decisions.
-- Validate cross-platform audio/text, microphone permissions, session recovery, escalation continuity and privacy on web, Android and iOS. A technology selection does not establish compliance with the 500-session target.
-- Finalize the testing toolchain with TP/TCS. Candidates: JUnit 5, Mockito, Testcontainers, Jest, React Native Testing Library, Playwright, Maestro, k6, LiveKit load testing.
+- Follow the SDD topology. Implementation package layout and authentication protocol must follow applicable approved specifications.
+- Pin compatible dependency and runtime versions during bootstrap, including React Native Paper and its icon integration. Verify font and icon loading on all targets.
+- Validate cross-platform WebRTC audio/text, microphone permissions, signaling authorization, ICE/TURN connectivity, network-address privacy, session recovery and escalation continuity on web, Android and iOS. A technology selection does not establish compliance with the 500-session target; measure signaling and TURN capacity under representative relay ratios.
+- Select testing tools in accordance with TP/TCS and validate the required test coverage, including representative WebRTC/STUN/TURN load tests.
 - Establish the deployment environment, signing credentials and release configuration before enabling deployment jobs.
 
 ## References
 
-- Project: RAD v1.0.0, §3.3; SoW; Business Case §7.2 and reuse candidates.
-- [Expo SDK compatibility](https://docs.expo.dev/versions/latest/), [LiveKit integration](https://docs.expo.dev/guides/using-livekit/), [LiveKit data delivery](https://docs.livekit.io/transport/data/packets/).
+- Project: RAD v1.0.0, §3.3; SDD v1.0.0, §§1.2.1, 2.1, 2.3–2.3.1, 3.6; SoW.
+- [Expo SDK compatibility](https://docs.expo.dev/versions/latest/), [WebRTC peer connections](https://webrtc.org/getting-started/peer-connections), [React Native WebRTC](https://github.com/react-native-webrtc/react-native-webrtc), [Expo WebRTC configuration](https://github.com/expo/config-plugins/tree/main/packages/react-native-webrtc), [WebRTC data channels](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Using_data_channels).
+- [React Native Paper setup](https://oss.callstack.com/react-native-paper/docs/guides/getting-started), [Paper icons](https://oss.callstack.com/react-native-paper/docs/guides/icons).
 - [Spring Boot database initialization](https://docs.spring.io/spring-boot/how-to/data-initialization.html), [Maven Wrapper](https://maven.apache.org/tools/wrapper/), [Flyway validation](https://documentation.red-gate.com/flyway/reference/commands/validate).
 - [GitHub Actions Node.js](https://docs.github.com/en/actions/tutorials/build-and-test-code/nodejs), [EAS builds from CI](https://docs.expo.dev/build/building-on-ci/).

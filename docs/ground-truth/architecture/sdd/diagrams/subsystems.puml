@@ -1,0 +1,108 @@
+@startuml
+' Source: SDD v1.0.0, section 2.2.1.
+top to bottom direction
+skinparam linetype ortho
+skinparam shadowing false
+skinparam componentStyle uml2
+skinparam nodesep 65
+skinparam ranksep 75
+skinparam padding 8
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+
+skinparam component {
+  BackgroundColor #FFFFFF
+  BorderColor #000000
+  ArrowColor #000000
+}
+
+' ==================== LIVELLO 1 (ALTO) ====================
+component "«Component»\nGestione Accesso\ne tutela minori" as Accesso
+
+' ==================== LIVELLO 2 ====================
+component "«Component»\nGestione Profili e\nSicurezza Account" as Profili
+component "«Component»\nGestione Helper\ne Abilitazione" as Helper
+component "«Component»\nGestione Matching e\nPresa in carico" as Matching
+
+' ==================== LIVELLO 3 ====================
+component "«Component»\nGestione Richieste\ndi Ascolto" as Richieste
+component "«Component»\nGestione Comunicazione\ne Sessione" as Comunicazione
+component "«Component»\nGestione Feedback\ne Segnalazioni" as Feedback
+component "«Component»\nGestione Notifiche" as Notifiche
+
+' ==================== LIVELLO 4 ====================
+component "«Component»\nGestione Safe\nEscalation" as Escalation
+component "«Component»\nGestione Fallback\nEscalation" as Fallback
+
+' ==================== LIVELLO 5 (BASSO) ====================
+component "«Component»\nDatabase" as DB
+
+' ==================== VINCOLI DI LAYOUT (IDENTICI ALLA FOTO) ====================
+Accesso -[hidden]down-> Helper
+
+Profili -[hidden]right-> Helper
+Helper -[hidden]right-> Matching
+
+Profili -[hidden]down-> Richieste
+Helper -[hidden]down-> Comunicazione
+Matching -[hidden]down-> Feedback
+Matching -[hidden]down-> Notifiche
+
+Richieste -[hidden]right-> Comunicazione
+Comunicazione -[hidden]right-> Feedback
+Feedback -[hidden]right-> Notifiche
+
+Comunicazione -[hidden]down-> Escalation
+Notifiche -[hidden]down-> Fallback
+Escalation -[hidden]right-> Fallback
+
+Escalation -[hidden]down-> DB
+
+' ==================== DIPENDENZE SEZIONE 3 ====================
+' --- 3.1 Gestione Accesso e tutela minori ---
+Accesso .down.> Profili
+Accesso .down.> Helper
+Accesso .down.> DB
+
+' --- 3.2 Gestione Profili e Sicurezza Account ---
+Profili .down.> Feedback
+Profili .down.> DB
+
+' --- 3.3 Gestione Helper e Abilitazione ---
+Helper .left.> Profili
+Helper .down.> DB
+
+' --- 3.4 Gestione Richieste di Ascolto ---
+Richieste .up.> Matching
+Richieste .right.> Comunicazione
+Richieste .right.> Feedback
+Richieste .down.> DB
+
+' --- 3.5 Gestione Matching e Presa in carico ---
+Matching .left.> Helper
+Matching .down.> Richieste
+Matching .down.> Feedback
+Matching .down.> Notifiche
+Matching .down.> DB
+
+' --- 3.6 Gestione Comunicazione e Sessione ---
+Comunicazione .left.> Richieste
+
+' --- 3.7 Gestione Feedback e Segnalazioni ---
+Feedback .left.> Richieste
+Feedback .right.> Notifiche
+Feedback .down.> DB
+
+' --- 3.8 Gestione Safe Escalation ---
+Escalation .up.> Profili
+Escalation .right.> Fallback
+Escalation .up.> Notifiche
+Escalation .down.> DB
+
+' --- 3.9 Gestione Fallback Escalation ---
+Fallback .left.> Escalation
+Fallback .up.> Notifiche
+Fallback .down.> DB
+
+Notifiche .down.> DB
+@enduml

@@ -1,0 +1,146 @@
+@startuml
+' SDD v1.0.0, section 2.4, p. 15.
+title Class Diagram
+hide circle
+hide methods
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+
+class Utente {
+  - idUtente : String
+  - nome : String
+  - cognome : String
+  - dataNascita : Date
+}
+
+class Caller {
+  - contatoreRichiesteEffettuate : int
+}
+
+class Helper {
+  - contatoreDisconnessioni : int
+  - isActive : boolean
+}
+
+class Supervisor {
+  - disponibileEscalation : boolean
+}
+
+class SessioneUtente {
+  - idSessione : String
+  - modalitaOspite : boolean
+  - dataInizio : DateTime
+  - dataScadenza : DateTime
+}
+
+class Dispositivo {
+  - idDispositivo : String
+  - numeroAccessiSAP : int
+  - inizioFinestraTemporale : DateTime
+  - inibito : boolean
+}
+
+class Abilitazione {
+  - idAbilitazione : String
+  - nome : String
+  - codiceEntePartner : String
+  - verificata : boolean
+  - dataVerifica : Date
+}
+
+class Disponibilita {
+  - idDisponibilita : String
+  - data : Date
+  - orarioInizio : Time
+  - orarioFine : Time
+}
+
+class RichiestaAscolto {
+  - idRichiesta : String
+  - categorie : List<String>
+  - descrizione : String
+  - categoriaEtaCaller : String
+  - canaleDesiderato : String
+  - stato : String
+  - timestampCreazione : DateTime
+}
+
+class PropostaAscolto {
+  - idProposta : String
+  - timestampInvio : DateTime
+  - scadenza : DateTime
+  - esito : String
+}
+
+class SessioneAscolto {
+  - idSessioneAscolto : String
+  - canale : String
+  - statoConnessione : String
+  - nicknameCaller : String
+  - nicknameHelper : String
+  - callerMinorenne : boolean
+}
+
+class Feedback {
+  - idFeedback : String
+  - livelloAffinita : int
+  - problemaTecnico : boolean
+  - disconnessioneVolontaria : boolean
+}
+
+class SegnalazioneAbusoSAP {
+  - idSegnalazione : String
+  - motivazione : String
+  - timestamp : DateTime
+}
+
+class ProceduraEscalation {
+  - idEscalation : String
+  - stato : String
+  - inFallback : boolean
+  - timestampAttivazione : DateTime
+  - timestampChiusura : DateTime
+}
+
+class Rendicontazione {
+  - idRendicontazione : String
+  - azioniIntraprese : String
+  - motivazioni : String
+}
+
+class LogAudit {
+  - idLog : String
+  - dataOra : DateTime
+  - attoriCoinvolti : List<String>
+  - esito : String
+}
+
+Utente <|-- Caller
+Utente <|-- Helper
+Utente <|-- Supervisor
+
+Utente "0..1" -- "0..*" SessioneUtente : Avvia
+Dispositivo "0..1" -- "0..*" SessioneUtente : Ospita
+SessioneUtente "1" -- "0..*" RichiestaAscolto : Genera
+Caller "0..1" -- "0..*" RichiestaAscolto : Invia
+Caller "1" -- "0..*" Feedback : Compila
+RichiestaAscolto "1" *-- "0..*" PropostaAscolto : Genera
+Helper "1" -- "0..*" PropostaAscolto : Riceve
+RichiestaAscolto "1" -- "0..1" SessioneAscolto : Attiva
+Helper "1" -- "0..*" SessioneAscolto : Gestisce
+Helper "1" *-- "0..*" Disponibilita : Definisce
+Helper "0..*" o-- "1..*" Abilitazione : Possiede
+Supervisor "0..*" -- "1..*" Abilitazione : Possiede
+Supervisor "0..*" -- "0..*" Abilitazione : Verifica
+SessioneAscolto "1" *-- "0..1" Feedback : Riceve
+SessioneAscolto "1" *-- "0..1" SegnalazioneAbusoSAP : Genera
+Helper "1" -- "0..*" SegnalazioneAbusoSAP : Invia
+SegnalazioneAbusoSAP "0..*" -- "1" Dispositivo : Riceve
+SessioneAscolto "1" -- "0..*" ProceduraEscalation : Attiva
+Helper "1" -- "0..*" ProceduraEscalation : Avvia
+Supervisor "0..1" -- "0..*" ProceduraEscalation : Gestisce
+ProceduraEscalation "1" *-- "0..1" Rendicontazione : Richiede
+Helper "1" -- "0..*" Rendicontazione : Compila
+ProceduraEscalation "1" -- "0..1" LogAudit : Registra
+
+@enduml
